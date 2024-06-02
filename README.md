@@ -11,5 +11,5 @@ Ping a spot! Tell others an interesting point. Emote to talk to them and everyon
 Announce your achievements by playing the game, from collecting a time piece to beating a hard deathwish to even that you were responsible for claiming the victory in Vanessa's Curse!
 
 ## Documentation
-[Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki) for all help.
-[Translation Support](https://github.com/SamiSha99/OnlineCommunication/wiki/Translation-Support) for help with translating.
+* [Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki) for all help.
+* [Translation Support](https://github.com/SamiSha99/OnlineCommunication/wiki/Translation-Support) for help with translating.
