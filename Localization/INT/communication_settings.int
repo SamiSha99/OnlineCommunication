@@ -1,0 +1,293 @@
+[panels]
+
+Original = Original Config Menu
+Ping = Ping Settings
+Chat = Chat Settings
+Safety = Safety Settings
+Other = Other Settings
+Help = Help Page
+Color = Ping and Text Coloring
+Advanced = Advanced Settings
+
+mojer = mojer mode
+
+[configs]
+
+; Original and pretty much any other panel
+PingLifeTime = Ping Lifetime
+PingSoundType = Ping Sound
+PingCastType = Ping Cast
+PingSpotFeature = Ping Spot Feature
+
+FilterType = Filter Type
+AntiSpam = Anti-Spam
+
+TogglePingSystem = Toggle Pinging
+TogglePingButton = Toggle Pinging Button
+ToggleOnlineChat = Toggle Online Chat
+ToggleAdditionalEmotes = Toggle Extra Emotes
+ToggleDebugging = Toggle Debugging
+
+; Ping
+CustomSoundPackage = Custom Sound Path (WIP)
+
+PingCrossHairAlpha = Transparency
+PingCrossHairSize = Size
+PingCrossHairColor = Color
+
+PingNotificationMasterVolume = Volume
+PingNotificationRange = Maximum Volume Range
+PingNotificationDecayingRange = Decaying Volume Range
+DontSendIfOutOfRange = Mute Ping If Too Far
+AllowHatHelperToAttract = Ping Attracts Helper Hat
+
+; Chat
+GlobalScale = Chat Font Size
+ChatClippedXLimit = Chat Width Scale
+ChatEmoteTextColor = Emote Text Color
+StartingLineType = Starting Line Indicator
+
+PlayerColor = Player Color
+EnemyColor = Enemy Color
+NonePlayableColor = NPC Color
+ObjectColor = Object Color
+ImportantColor = Important Color
+LocationColor = Location Color
+
+; Announcements
+EnableJoin = Player Joined
+EnableLeave = Player Left
+EnableConnectionFailed = Connection Failed
+EnableTimePiece = Player Gets Time Piece
+EnableVanessaCurse = Vanessa's Curse Prompts
+EnableDeathWish = Death Wish
+
+; Advanced
+
+PingHotKey = Ping Keyboard Key
+ExpandChatHotkey = Expand Chat Keyboard Key
+ChannelType = Communication Channel Type
+PrivateChannelName = Private Channel Name
+ColorBlindness = Color Blindness Correction
+DisplayNameAndAvatars = Display Player Names & Avatars
+
+[Header]
+
+; Ping
+PingHeader = General
+CrossHairHeader = Crosshair
+NotificationHeader = Notification Sound
+
+; Chat
+ChatBoxHeader = Chat Box
+ChatColorsHeader = Chat Colors
+SafetyHeader = Safety Settings
+
+HelpText = Want to support this mod?
+ChatBox = Chat Box
+AnnouncementsHeader = Announcements
+
+; Other
+ToggleableHeader = Toggleable Features
+CommunicationChannelSettings = Communication Channel
+KeyBindSettings = Controls
+OfficialGameSettings = Gears for Breakfast Settings
+
+[inputs]
+
+SoundPathWay = Package.Sound | Package.Group.Sound
+ListeningFiller = Listening...
+IllegalKey = Illegal Key!
+PrivateChannelFiller = My Awesome Private Channel
+
+[ButtonURL]
+
+OpenDocuments_Button = Open Mod Wiki!
+OpenHexPicker_Button = Open Color Picker!
+
+[ChatBox]
+
+ColorExample = @{~LC|Moon Dance} by @{~NPC|DJ Grooves} featuring [owner]. Embark on a journey full of endless music, dancing and facing dangerous @{~EC|Monsters} and @{~EC|Aliens}, watch as [owner] jumps from a @{~OC|platform} to @{~OC|another} to save the day and claim the @{~IC|Time Piece}! @{~LC|Moon Dance} coming soon 3024!
+OriginalNote = These are also accessible from the @{~LC|mod's menu page}.
+CustomSoundNote = Format: [color=gold]PackagePath[/color][color=hot_pink].[/color][color=Azure_Blue]SoundName[/color], Example: [color=gold]SSExamplePath[/color][color=hot_pink].[/color][color=Azure_Blue]ExampleSound[/color].
+
+[chatexpand]
+BUTTON_DRAG = Drag to adjust the chatbox position.
+BUTTON_DOWNSCALE = Downscale chat content. Current size: @{~GS|.2}x
+BUTTON_UPSCALE = Upscale chat content. Current size: @{~GS|.2}x
+BUTTON_CONFIG = Open the config menu.
+BUTTON_RESET = Resets the chatbox's position and font size.
+
+[tooltip]
+
+; PINGS
+
+PingLifeTime_0 = [color=#78eb36]Default: 10[/color]
+PingLifeTime_1 = Adjusts how long Pings last on your screen in seconds.
+
+PingSoundType_0 = [color=#78eb36]Default: Ship Shape[/color]
+PingSoundType_1 = [color=gold]Custom Sounds[/color] requires you to input a sound package path that is already loaded, see Ping Settings section for more info.
+PingSoundType_2 = Adjusts the notification sound of the Ping.
+
+PingCastType_0 = [color=#78eb36]Default: Confirm[/color]
+PingCastType_1 = [color=gold]Quick Cast[/color] - Crosshair is always visible, pressing [color=gold]"@{~PHK}"[/color] will Ping a spot. 
+PingCastType_2 = [color=gold]On Release[/color] - Press then Release [color=gold]"@{~PHK}"[/color] to Ping a spot. Press the [color=gold]Pause key[/color] to Cancel.
+PingCastType_3 = [color=gold]Confirm[/color] - Press [color=gold]"@{~PHK}"[/color] then press it again or attack to Ping a spot. Press the [color=gold]Pause key[/color] to Cancel.
+PingCastType_4 = [color=ruby]KEYBOARD ONLY![/color]
+
+PingSpotFeature_0 = [color=#78eb36]Default: All[/color]
+PingSpotFeature_1 = [color=ruby]This feature represents the only Gamepad support for Pings, disabling this makes you unable to Ping on Gamepads![/color]
+PingSpotFeature_2 = Allows you to Ping through a [color=gold]Silent Emote[/color], emote again or press [color=gold]Attack key[/color] to confirm. Press the [color=gold]Pause key[/color] to Cancel.
+
+AllowHatHelperToAttract_0 = [color=#78eb36]Default: Off[/color]
+AllowHatHelperToAttract_1 = [color=yellow_lemon]This makes the hat unusuable in some situations where it's necessary, enable it with caution![/color]
+AllowHatHelperToAttract_2 = Allow your [color=gold]Primary Hat[/color] to focus on the nearest Ping similar to objectives.
+
+CustomSoundPackage_0 =  [color=#78eb36]Default: ssexamplepath.examplesound[/color]
+CustomSoundPackage_1 =  See [color=gold]Wiki[/color] in [color=gold]Help[/color] for more info over how to use [color=gold]Custom Sounds[/color] as your notification sound! 
+CustomSoundPackage_2 =  Input a package path of a [color=gold]SoundCue[/color] that is [color=gold]currently loaded[/color] (Pasting is possible, [color=gold]CTRL + V[/color]).
+
+PingNotificationMasterVolume_0 = [color=#78eb36]Default: 100%[/color]
+PingNotificationMasterVolume_1 = Adjust the volume of your [color=gold]Ping Notification Sound[/color]
+
+PingNotificationRange_0 = [color=#78eb36]Default: 30 meters[/color]
+PingNotificationRange_1 = The range around you in which any ping will have the [color=gold]Maximum Volume[/color] that was set.
+
+PingNotificationDecayingRange_0 = [color=#78eb36]Default: 70 meters[/color]
+PingNotificationDecayingRange_1 = This only starts after it passes beyond the [color=gold]Maximum Volume Range[/color] the was set.
+PingNotificationDecayingRange_2 = The decaying range in which pings become quieter the farther they are.
+
+DontSendIfOutOfRange_0 = @{>communication_settings>tooltip>TOGGLE_DISABLED}
+DontSendIfOutOfRange_1 = If enabled it will mute pings that are too far using the combined range of [color=gold]Maximum Volume Range[/color] and [color=gold]Decaying Volume Range[/color].
+
+PingCrossHairColor_0 = [color=#78eb36]Default: [color=#FFFFFF]#FFFFFF[/color][/color]
+PingCrossHairColor_1 = Color of your [color=gold]Crosshair[/color].
+
+PingCrossHairAlpha_0 = [color=#78eb36]Default: 70%[/color]
+PingCrossHairAlpha_1 = The [color=gold]transparency[/color] of your [color=gold]Crosshair[/color].
+
+PingCrossHairSize_0 = [color=#78eb36]Default: 100%[/color]
+PingCrossHairSize_1 = The [color=gold]size[/color] of your [color=gold]Crosshair[/color].
+
+; ADVANCED
+
+PingHotKey_0 = [color=#78eb36]Default: R[/color]
+PingHotKey_1 = Current Key: "[color=gold]@{~PHK}[/color]"
+PingHotKey_2 = The Keyboard Keybind for Pinging.
+
+ExpandChatHotkey_0 = [color=#78eb36]Default: T[/color]
+ExpandChatHotkey_1 = Current Key: "[color=gold]@{~ECHK}[/color]"
+ExpandChatHotkey_2 = The Keyboard Keybind for [color=gold]Expanding the Chat[/color].
+
+ChannelType_0 = [color=#78eb36]Default: All[/color]
+ChannelType_1 = [color=gold]Private[/color] - Messages will only be forwarded to and recieved from your [color=gold]private channel[/color] (see @{>communication_settings>configs>PrivateChannelName}).
+ChannelType_2 = [color=gold]Steam Friends[/color] - Messages will only be forwarded to and recieved from your [color=lime]Steam Friends[/color].
+ChannelType_3 = [color=gold]All[/color] - You will see all messages.
+ChannelType_4 = Adjusts your [color=gold]privacy level[/color] with others in the lobby.
+
+PrivateChannelName_0 = [color=#78eb36]Default: (Empty)[/color]
+PrivateChannelName_1 = Other players must have that same channel to be able to communicate.
+PrivateChannelName_2 = The name of the [color=gold]Private Channel[/color].
+
+; COLORS
+
+PlayerColor_Example_0 = [color=#78eb36]Default: [color=#FFFFFF]#FFFFFF[/color][/color]
+PlayerColor_Example_1 = [owner$:] @{~CETC|PECK!}
+PlayerColor_Example_2 = [color=gold]This color sync to other players in the lobby![/color]
+PlayerColor_Example_3 = Adjusts the color of your @{~PC|personal ping} and @{~PC|chat name}.
+
+EmoteColor_Example_0 = [color=#78eb36]Default: [color=#FFFFFF]#FFFFFF[/color][/color]
+EmoteColor_Example_1 = [owner] to [color=#42A0F7]Bow Kid:[/color] @{~CETC|OVER HERE!}
+EmoteColor_Example_2 = Adjusts the color of @{~CETC|Emotes Text} (Stickers with text are unaffected).
+
+EnemyColor_Example_0 = [color=#78eb36]Default: [color=#FF3A3C]#FF3A3C[/color][/color]
+EnemyColor_Example_1 = @{>pings>default>Hat_Boss_Mafia}
+EnemyColor_Example_2 = Adjusts the color of @{~EC|Enemies and Hazards}.
+
+NPCColor_Example_0 = [color=#78eb36]Default: [color=#459DF5]#459DF5[/color][/color]
+NPCColor_Example_1 = @{>pings>default>Hat_NPC_Conductor}
+NPCColor_Example_2 = Adjusts the color of @{~NPC|None-Playable Characters}.
+
+LocationColor_Example_0 = [color=#78eb36]Default: [color=#4ECC27]#4ECC27[/color][/color]
+LocationColor_Example_1 = @{>pings>default>Hat_TimeRiftGate}
+LocationColor_Example_2 = Adjust the color of @{~LC|locations}.
+
+ImportantColor_Example_0 = [color=#78eb36]Default: [color=#E137FA]#E137FA[/color][/color]
+ImportantColor_Example_1 = [owner] wants to collect the @{~IC|Time Piece}!
+ImportantColor_Example_2 = Adjust the color of @{~IC|very important tasks/items}.
+
+ObjectColor_Example_0 = [color=#78eb36]Default: [color=#FDFD30]#FDFD30[/color][/color]
+ObjectColor_Example_1 = @{>pings>default>Hat_SunglassDispenser}
+ObjectColor_Example_2 = Adjusts the color of @{~OC|very basic tasks/items}.
+
+; CHAT SETTINGS
+
+FilterType_0 = [color=#78eb36]Default: PECK[/color]
+FilterType_1 = Timmy: Ah [color=ruby]crap[/color], that is NOT radical to swear!
+FilterType_2 = Example:
+FilterType_3 = [color=gold]Nice Compliments[/color] - Replaces words with nice compliments.
+FilterType_4 = [color=gold]!@#$%^&*?[/color] - Similar to Stars.
+FilterType_5 = [color=gold]Stars[/color] - Replaces words with ****.
+FilterType_6 = [color=gold]PECK[/color] - Replaces words with PECK.
+FilterType_7 = Filters out offensive words from player names or the chat. Recommended for Content Creators.
+
+AntiSpam_0 = [color=#78eb36]Default: Last Message[/color]
+AntiSpam_1 = [color=gold]Visible Messages[/color] - All currently visible messages are deemed as duplicates if some of them were sent again.
+AntiSpam_2 = [color=gold]Last Message[/color] - Last sent messsage is deemed as duplicate if it was sent again.
+AntiSpam_3 = Avoids sending [color=gold]similar messages[/color] and applies [color=gold]combo[/color] next to it which represents how many times it has been said!
+
+GlobalScale_0 = [color=#78eb36]Default: 1.0x[/color]
+GlobalScale_1 = Adjusts the [color=gold]text and icons size[/color] of the chat logs.
+
+ChatClippedXLimit_0 = [color=#78eb36]Default: 30%[/color]
+ChatClippedXLimit_1 = The [color=gold]width[/color] of the Chat Box as a [color=gold]precentage of your screen monitor[/color].
+
+StartingLineType_0 = [color=#78eb36]Default: Asterisk | *[/color]
+StartingLineType_1 = Adds an indicator at the beginning of each chat message.
+
+; ANNOUNCEMENTS
+
+EnableJoin_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableJoin_1 = Toggles the [color=gold]Join Prompt[/color].
+
+EnableLeave_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableLeave_1 = Toggles the [color=gold]Leave Prompt[/color].
+
+EnableTimePiece_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableTimePiece_1 = Toggles the [color=gold]Got Time Piece Prompt[/color].
+
+EnableConnectionFailed_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableConnectionFailed_1 = Toggles the [color=gold]Connection Failed Prompt[/color].
+
+EnableVanessaCurse_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableVanessaCurse_1 = Toggles the [color=gold]Vanessa's Curse Prompts[/color].
+
+EnableDeathWish_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableDeathWish_1 = Toggles the [color=gold]Death Wish Prompts[/color].
+
+; HELP
+ToggleDebugging_0 = @{>communication_settings>tooltip>TOGGLE_DISABLED}
+ToggleDebugging_1 = [color=ruby]EXTREMELY SPAMMY TOO.[/color]
+ToggleDebugging_2 = [color=#78eb36]RECOMMENDED FOR MODDERS.[/color]
+ToggleDebugging_3 = Show Debug Lines.
+ToggleDebugging_4 = Shows localizations when pings fail to get localized.
+ToggleDebugging_5 = A lot of console printing.
+ToggleDebugging_6 = Causes the following:
+ToggleDebugging_7 = Toggles [color=gold]Debugging Mode[/color].
+
+; Toggles
+TOGGLE_ENABLED = [color=#78eb36]Default: Enabled[/color]
+TOGGLE_DISABLED = [color=#78eb36]Default: Disabled[/color]
+
+ToggleOnlineChat_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+ToggleOnlineChat_1 = Toggles all [color=gold]Online Chat[/color] related features.
+
+TogglePingSystem_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+TogglePingSystem_1 = Toggles all Ping related features. 
+
+TogglePingButton_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+TogglePingButton_1 = Toggles the ability to Ping, you will still recieve pings from other players.
+
+ToggleAdditionalEmotes_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+ToggleAdditionalEmotes_1 = [color=gold]This does not disable those emotes from other players.[/color]
+ToggleAdditionalEmotes_2 = While Enabled, adds @{~CETC|"DARLING!"}, @{~CETC|"YEAH!"} and @{~CETC|"HELP!"} to the Emote Wheel.

@@ -1,0 +1,302 @@
+;                                          ;
+; FOR MORE INFO CHECK THE "README.md" FILE ;
+;                                          ;
+
+; Contains all localization keys for pinging actors in the world
+
+[castle_mu]
+Hat_NumberTicketDispenser = [owner] wants to @{~OC|take a turn in being judged}!
+Hat_TimeObject_Cluster = [owner] wants to @{~IC|return Home}![icon=timepiece]
+
+[vanessa_manor]
+Hat_StaticHidingActor = [owner] wants to @{~OC|hide} from @{~EC|Queen Vanessa}!
+
+[ship_main]
+Hat_NPC_CruiseSeal_28 = [owner$:] @{~NPC|Egg.}
+Hat_Enemy_SecurityGuard = [owner] wants to listen to the @{~NPC|C.A.W Agents}!
+
+[themoon_5]
+Hat_TimeObject_Base = [owner] wants to collect the @{~IC|Parade Surprise}![icon=timepiece]
+
+[hub_spaceship]
+Hat_Bench_SpaceshipChair_3 = [owner] wants to drive the @{~IC|spaceship} and return @{~LC|home}!
+
+[default]
+
+; General content
+PLAYER_PING_LIMITED = [color=ruby]You are being ping limited.[/color]
+PLAYER_PING_DISABLED = [color=ruby]Pinging is unavailable.[/color]
+PLAYER_PING_DISABLED_VC = [color=ruby]Pinging is disabled in @{~LC|Vanessa's Curse} due to competitive advantage.[/color]
+
+; Time Pieces
+Hat_TimeObject_Base = [owner] wants to collect the @{~IC|Time Piece}![icon=timepiece]
+Hat_TimeObject_Metro = [owner] wants to collect the @{~IC|Metro Time Piece}![icon=timepiece]
+Hat_TimeObject_Cluster = [owner] wants to collect the @{~IC|Time Pieces}![icon=timepiece]
+
+; Online Party
+Hat_GhostPartySettingsActor = [owner] wants to adjust their @{~LC|Online Party} settings!
+
+; COLLECTIBLES
+Hat_Collectible = [owner] wants to collect an @{~IC|item}!
+Hat_Collectible_VaultCode_Base = [owner] wants to collect a Vault Ticket![icon=ticket_red]
+
+Hat_Collectible_EnergyBit = [owner] wants to collect a @{~IC|Pon}![icon=pon]
+Hat_Collectible_HealthBit = [owner] wants to collect a @{~IC|Health Pon}![icon=health_pon]
+Hat_Collectible_PowerBit = [owner] wants to collect a @{~IC|Power Pon}![icon=power_pon]
+Hat_Collectible_TreasureBit = [owner] wants to collect a @{~IC|Treasure Pon}![icon=treasure_pon]
+Hat_Collectible_RouletteToken = [owner] wants to collect a @{~IC|Roulette Token}![icon=coin]
+Hat_Collectible_TimePieceShard = [owner] wants to collect a @{~IC|Time Piece Shard}![icon=shard]
+
+Hat_Collectible_VaultCode = [owner] wants to collect a @{~IC|Red Vault Ticket}![icon=ticket_red]
+Hat_Collectible_ticket_green = [owner] wants to collect a @{~IC|Green Vault Ticket}![icon=ticket_green]
+Hat_Collectible_ticket_blue = [owner] wants to collect a @{~IC|Blue Vault Ticket}![icon=ticket_blue]
+Hat_Collectible_VaultCode_Yellow = [owner] wants to collect a @{~IC|Golden Vault Ticket}![icon=ticket_gold]
+
+Hat_Collectible_StoryBookPage = [owner] wants to collect @{~IC|Story Book Page}![icon=storybook]
+
+Hat_Collectible_HatPart = [owner] wants to collect a @{~IC|Yarn}![icon=yarn]
+Hat_Collectible_BadgePart_Sprint = [owner] wants to collect a @{~IC|Sprint Yarn}![icon=yarn_sprint]
+Hat_Collectible_BadgePart_Chemical = [owner] wants to collect a @{~IC|Brew Yarn}![icon=yarn_brew]
+Hat_Collectible_BadgePart_StatueFall = [owner] wants to collect an @{~IC|Ice Yarn}![icon=yarn_ice]
+Hat_Collectible_BadgePart_FoxMask = [owner] wants to collect a @{~IC|Dweller Yarn}![icon=yarn_dweller]
+Hat_Collectible_BadgePart_TimeStop = [owner] wants to collect a @{~IC|Time Stop Yarn}![icon=yarn_timestop]
+
+Hat_Collectible_Key = [owner] wants to collect a @{~IC|key}!
+Hat_Collectible_MurderClue = [owner] wants to collect a @{~IC|Murder Clue}!
+
+Hat_Collectible_TimeBonus = [owner] wants to collect @{~IC|[color=#1fff00]+20[/color] Extra Time}!
+
+; PLATFORMING
+Hat_Platform_Base = [owner] wants to use a @{~OC|Platform}!
+Hat_PlatformFall = [owner] wants to use a @{~OC|Falling Platform}!
+Hat_StatueFlipper = [owner] wants to use the @{~OC|Ice Panel}!
+Hat_SpringBased = [owner] wants to jump on this @{~OC|Spring Board}!
+Hat_SpringBased_SpringBoard = @{>pings>default>Hat_SpringBased}
+Hat_SpringBased_Parasol = [owner] wants to jump on a @{~OC|Parasol}!
+Hat_SpringBased_FatBird = [owner] wants to jump on this @{~OC|Fat Bird}!
+Hat_SpringBased_Event_Winter_CatPlush = [owner] wants to jump on the @{~OC|Cat Plushie}!
+Hat_SpringBased_LifePreserver = [owner] wants to jump on a @{~OC|Life Preserver}!
+Hat_SpringFungi = [owner] wants to bounce on a @{~OC|Mushroom}!
+
+AutoLadder = [owner] wants to climb a @{~OC|Ladder}!
+Hat_Rope = [owner] wants to step on a @{~OC|Rope}!
+Hat_RopeWire = [owner] wants to step on a @{~OC|Wire}!
+
+Hat_Balloon_Deadbird = [owner] wants to jump on a @{~OC|Sand Bag}!
+Hat_Balloon = [owner] wants to jump on a @{~OC|Balloon}!
+
+Hat_HookPoint = [owner] wants to swing off of a @{~OC|Hook Point}!
+Hat_HookPointLift_Base = [owner] wants to swing off of a @{~OC|Hook Lift}!
+Hat_HookPointLift_Noose = [owner] wants to @{~OC|"hang out"}! Yeah... sure.
+Hat_HookPoint_Lantern = [owner] wants to swing off of a @{~OC|Lantern}!
+Hat_HookPoint_Desert = [owner] wants to travel using a @{~OC|Zip Line}!
+Hat_HookPoint_GiantTwilightBell = [owner] wants to swing the @{~IC|Twilight Bell}!
+
+Hat_DwellerBell = [owner] wants to trigger the @{~IC|Dweller Bell}!
+Hat_DwellerBell_Subtract = [owner] wants to trigger the @{~IC|Negative Dweller Bell}!
+Hat_DwellerGate = [owner] wants to move the @{~IC|Dweller Gate}!
+
+Hat_MetroVacuum_Wall = [owner] wants to bounce off of a @{~OC|Cat Vacuum}!
+Hat_MetroVacuum_Floor_Movable = [owner] wants to bounce on a  @{~OC|Cat Vacuum}!
+
+Hat_PlayerTransport_Cannon = [owner] wants to use the @{~OC|Cannon}!
+
+; ENEMIES
+Hat_Enemy = [owner] wants to attack the @{~EC|Enemy}!
+Hat_Enemy_Boss = [owner] wants to attack the @{~EC|Boss}!
+Hat_Enemy_MadCrow = [owner] wants to attack @{~EC|Mad Crow}!
+Hat_Enemy_MadCrow_Red = [owner] wants to attack a @{~EC|Groovy Mad Crow}!
+Hat_Enemy_AlleyRat = [owner] wants to attack a @{~EC|Rat}! 
+Hat_Enemy_Mobster_Base = [owner] wants to attack @{~EC|Mafia}!
+Hat_Enemy_Mobster_Citizen = @{>pings>default>Hat_Enemy_Mobster_Base}
+Hat_Enemy_Mobster_Bully = [owner] wants to stop the @{~EC|Bully}!
+Hat_Enemy_NinjaCat = [owner] wants to attack @{~EC|Ninja Cat}!
+Hat_Enemy_NyakuzaCat = [owner] wants to attack @{~EC|Nyakuza Cat}!
+Hat_Enemy_Goat_Base = [owner] warns that @{~EC|Goat} is dangerous!
+Hat_Enemy_SecurityGuard = [owner] warns of this @{~EC|Security Guard}!
+Hat_Enemy_Shromb_Egg_Base = [owner] warns of this @{~EC|Shromb Egg}!
+Hat_Enemy_SleepyRaccoon = [owner] wants to attack @{~EC|Sleepy Raccoon}!
+Hat_Enemy_SleepyRaccoon_Dweller = [owner] wants to attack @{~EC|Dweller Sleepy Raccoon}!
+Hat_Enemy_MoonUFO = [owner] wants to attack the @{~EC|UFO}!
+Hat_Enemy_Spider = [owner] wants to attack the @{~EC|Spider}!
+Hat_Enemy_QueenStatue = [owner] warns of the @{~EC|Queen Statue}!
+Hat_Enemy_ScienceOwl = [owner] wants to attack the @{~EC|Owl}!
+Hat_Enemy_ScienceBand = [owner] warns of the @{~EC|Owl Band}!
+Hat_Enemy_Meatclub = [owner] warns of the @{~EC|Rolling Meat Club}!
+Hat_Enemy_ShockingSquid = [owner] wants to attack the @{~EC|Shocking Squid}!
+
+Hat_QueenVanessa = [owner] warns that @{~EC|Queen Vanessa} is VERY dangerous!
+
+; Considered an enemy but technically not one
+Hat_Enemy_TimeRiftBall_Base = [owner] wants to break the @{~IC|Riftball}!
+
+; BOSSES
+Hat_Boss_MustacheGirl = [owner] wants to fight @{~EC|Mustache Girl}!
+Hat_Boss_Mafia = [owner] wants to fight @{~EC|Mafia Boss}!
+Hat_Boss_Conductor = [owner] wants to fight @{~EC|The Conductor}!
+Hat_Boss_DJGrooves = [owner] wants to fight @{~EC|DJ Grooves}!
+Hat_Enemy_Toilet = [owner] wants to fight the @{~EC|Toilet of Doom}!
+Hat_Boss_SnatcherBoss = [owner] wants to fight @{~EC|Snatcher}!
+Hat_Enemy_BigToxicFlower = [owner] wants to eliminate the @{~EC|Big Toxic Flower}!
+
+; HAZARDS
+Hat_Hazard_Train = [owner] wants to ride the @{~IC|train}!
+Hat_Hazard_RoadBlock = [owner] warns of the @{~EC|Road Block}!
+Hat_Hazard_CastleHammer = [owner] warns of the @{~EC|Hammer}!
+Hat_Hazard_Cannon = [owner] warns of the @{~EC|Cannon}!
+Hat_Hazard_RouteProp_FoodCart = [owner] warns of the @{~EC|Food Cart}!
+Hat_RoadBlock_MetroSign = [owner] warns of the @{~EC|Electric Metro Sign}!
+Hat_Hazard_SlidingProp = [owner] warns of the @{~EC|Sliding Cart}!
+Hat_Hazard_CatTrain = [owner] warns of the @{~EC|Big Cat}!
+Hat_Hazard_MuLaser = [owner] warns of @{~EC|Mustache Girl's Laser}!
+Hat_Hazard_SplashWave = [owner] warns of the @{~EC|Splash Wave}!
+Hat_Hazard_Urchin = [owner] warns of the @{~EC|Urchin}!
+; not one, but still
+Hat_Hazard_MafiaBall_Finale = [owner] wants to kick the @{~IC|Mafia Ball}!
+
+Hat_Flamethrower = [owner] warns of the @{~EC|Flamethrower}!
+
+Hat_LavaMesh = [owner] warns of the @{~EC|Lava}!
+Hat_LavaFish = [owner] warns of the @{~EC|Lava Fish}!
+Hat_ToxicFlower = [owner] warns of the @{~EC|Toxic Flower}!
+
+Hat_ProjectileDynamite = [owner] warns of the @{~EC|Dynamite}!
+Hat_ProjectileTimePiece_Beam = [owner] warns of the @{~EC|Timepiece Beams}!
+
+; BREAKABLES
+Hat_ImpactInteract_Breakable = [owner] wants to break an @{~OC|Object}!
+Hat_ImpactInteract_Breakable_Chemical_Barrel = [owner] wants to break the @{~OC|Barrel}!
+Hat_ImpactInteract_Breakable_Chemical_Crate = [owner] wants to break the @{~OC|Crate}!
+Hat_ImpactInteract_Breakable_Chemical_GarbageBin = [owner] wants to break the @{~OC|Garbage Bin}!
+Hat_ImpactInteract_Breakable_Chemical_GraveCross = [owner] wants to break the @{~OC|Grave Cross}!
+Hat_ImpactInteract_Breakable_Chemical_GraveStone = [owner] wants to break the @{~OC|Grave Stone}!
+Hat_ImpactInteract_Breakable_Ice = [owner] wants to break the @{~OC|Ice Block}!
+
+Hat_DiveBoard = [owner] wants to use @{~OC|Dive Board}!
+Hat_DiveBoard_Cruise = [owner] wants to use the @{~OC|Dive Board}!
+Hat_DiveBoard_Statue = [owner] wants to use the @{~OC|Ice Panel}!
+Hat_DiveBoard_Statue = [owner] wants to use the @{~OC|Ice Panel}!
+Hat_PlayerTransport_SpringPad = @{>pings>default>Hat_DiveBoard_Statue}
+
+; CARRY OBJECTS
+Hat_CarryObject = [owner] wants to carry an @{~OC|object}!
+Hat_CarryObject_BeachBall = [owner] wants to play with a @{~OC|Beach Ball}!
+Hat_CarryObject_Event_Winter_Present = [owner] wants to give a @{~OC|Present}!
+Hat_CarryObject_Bucket = [owner] wants to carry a @{~OC|Bucket}!
+Hat_CarryObject_CrabBucket = [owner] wants to carry a @{~OC|Crab Bucket}!
+Hat_CarryObject_Pumpkin = [owner] wants to carry a @{~OC|Pumpkin}!
+Hat_CarryObject_SodaCan = [owner] wants to carry a @{~OC|Soda Can}!
+Hat_CarryObject_Event_Summer_SodaCan = [owner] wants to share a @{~OC|Soda}!
+Hat_CarryObject_Stackable = [owner] wants to carry an @{~IC|Important Task}!
+
+; NPC STUFF
+Hat_NPC = [owner] wants to talk with an @{~NPC|NPC}!
+Hat_NPC_MoonEgg = [owner] wants to talk to @{~NPC|Moon Egg}!
+Hat_NPC_CameraTourist = [owner] wants to talk to the @{~NPC|Tourist}!
+Hat_NPC_CoffeeClerk = [owner] wants to talk to the @{~NPC|Coffee Clerk}!
+Hat_NPC_Conductor = [owner] wants to talk to @{~NPC|The Conductor}!
+Hat_NPC_Conductor_GrandKid = [owner] wants to talk to @{~NPC|The Conductor's Grandkid}!
+Hat_NPC_CookingCat = [owner] wants to talk to @{~NPC|Cooking Cat}!
+Hat_NPC_CrowAgent = [owner] wants to talk to @{~NPC|The Crow Agent}!
+Hat_NPC_CruiseCaptainWalrus = [owner] wants to talk to @{~NPC|The Captain}!
+Hat_NPC_CruiseSeal = [owner] wants to talk to the @{~NPC|Seal}!
+Hat_NPC_DJGrooves = [owner] wants to talk to @{~NPC|DJ Grooves}!
+Hat_NPC_FireSpirit = [owner] wants to talk to the @{~NPC|Fire Spirit}!
+Hat_NPC_FireSpirit_BonFire = @{>pings>default>Hat_NPC_FireSpirit}
+Hat_NPC_FishDude = [owner] wants to talk to the @{~NPC|Fish Dude}!
+Hat_NPC_ForestDweller = [owner] wants to talk to the @{~NPC|Forest Dweller}!
+Hat_NPC_Goat = [owner] wants to talk to the @{~NPC|Goat}!
+Hat_NPC_MadCrow = [owner] wants to talk to the @{~NPC|Mad Crow}!
+Hat_NPC_MadCrow_Red = [owner] wants to talk to the @{~NPC|Cool Mad Crow}!
+Hat_NPC_MafiaBoss = [owner] wants to talk to the @{~NPC|Mafia Boss}!
+Hat_NPC_MafiaBossJar = @{>pings>default>Hat_NPC_MafiaBoss}
+Hat_NPC_Mobster = [owner] wants to talk to the @{~NPC|Mafia Goon}!
+Hat_NPC_Mobster_Goof = [owner] wants to talk to the @{~NPC|Goofy Mafia Goon}!
+Hat_NPC_SnatcherMinion = [owner] wants to talk to @{~NPC|Snatcher Minion}!
+Hat_NPC_BadgeSalesman = [owner] wants to talk to the @{~NPC|Badge Salesman}!
+Hat_NPC_MoonPenguin = [owner] wants to talk to the @{~NPC|Moon Penguin}!
+Hat_NPC_MoonJumper = [owner] wants to talk to @{~NPC|Moon Jumper}!
+Hat_NPC_MustacheGirl = [owner] wants to talk to @{~NPC|Mustache Girl}!
+Hat_NPC_NyakuzaShop = [owner] wants to order from a @{~NPC|Nyakuza Shop}!
+Hat_NPC_NinjaCat = [owner] wants to talk to a @{~NPC|Ninja Cat}!
+Hat_NPC_OldMan = [owner] wants to talk to an @{~NPC|old man}!
+Hat_NPC_QueenVanessa = [owner] wants to talk to @{~NPC|Queen Vanessa}!
+Hat_NPC_ScienceOwl = [owner] wants to talk to an @{~NPC|Owl}!
+Hat_NPC_SleepyRaccoon = [owner] wants to talk to @{~NPC|Sleepy Raccoon}!
+Hat_NPC_Snatcher = [owner] wants to talk to @{~NPC|Snatcher}!
+Hat_NPC_SunBurnt = [owner] wants to talk to a @{~NPC|Nomad}!
+Hat_NPC_TimeObject = [owner] wants to talk to the @{~NPC|Time Piece}![icon=timepiece]
+Hat_NPC_MetroEmpress = [owner] wants to talk to @{~NPC|The Empress}!
+Hat_NPC_MetroCreepyCat = [owner] wants to talk to a @{~NPC|Metro Cat}!
+Hat_NPC_TrainOperator = [owner] wants to talk to the @{~NPC|Owl Operator}!
+Hat_ForestDweller = @{>pings>default>Hat_NPC_ForestDweller}
+
+Hat_Citizen_MetroCat = @{>pings>default>Hat_NPC_MetroCreepyCat}
+Hat_NPC_MetroHelpDesk = @{>pings>default>Hat_NPC_MetroCreepyCat}
+
+; CHESTS
+Hat_TreasureChest_Base = [owner] wants to open a @{~IC|chest}!
+Hat_TreasureChest_GiftBox = [owner] wants to open a @{~IC|gift box}!
+Hat_TreasureChest_Toybox = [owner] wants to open a @{~IC|toy box}!
+Hat_TreasureChest_Wood = [owner] wants to open a @{~IC|wooden chest}!
+Hat_TreasureChest_WoodRoots = @{>pings>default>Hat_TreasureChest_Wood}
+
+; OTHER
+Hat_DivaGreetSpot = [owner] wants to @{~IC|greet the fans}!
+Hat_NPC_CameraSnapper = [owner] wants to @{~IC|take a picture}!
+Hat_PowerPonField = [owner] wants to @{~IC|turn off the Power Field}![icon=power_pon]
+Hat_Bird = [owner] wants to watch the @{~OC|Bird}!
+Hat_BeachCrab = [owner] wants to watch the @{~OC|Beach Crab}!
+Hat_Cockroach = [owner] wants to [color=red]SQUASH[/color] a @{~EC|cockroach}!
+Hat_Vacuum = [owner] wants to ride @{~NPC|Rumbi}!
+Hat_Bench_Generic = [owner] wants to @{~OC|sit}!
+Hat_Bench_SpaceshipChair = @{>pings>default>Hat_Bench_Generic}
+Hat_SunglassDispenser = [owner] wants to wear some @{~OC|sunglasses}!
+Hat_NumberTicketDispenser = [owner] wants to take a @{~OC|number}!
+Hat_Lever_Generic = [owner] wants to hit the @{~OC|lever}!
+Hat_DwellerFruit = [owner] wants to carry a @{~OC|Cherry Fruit}!
+Hat_Door = [owner] wants to go through a @{~LC|door}!
+Hat_DoorTrain = @{>pings>default>Hat_Door}
+Hat_Button_Base = [owner] wants to push the @{~OC|button}!
+Hat_ShipHologram = [owner] wants to look at the @{~OC|Ship Hologram}!
+
+Hat_SandStationHorn = [owner] wants to blow the ~{IC|horn}! 
+
+Hat_AlpineTelescope = [owner] wants to gaze through a @{~OC|telescope}!
+
+Hat_GiantFaucetHandle = [owner] wants to close the @{~IC|Faucet}!
+Hat_GiantHeatDial = [owner] wants to turn up the @{~IC|heat}!
+
+Hat_Goodie_Vault = [owner] wants to open the @{~IC|Vault}!
+
+Hat_TimeRiftGate = [owner] wants to enter the @{~LC|Time Rift Gate}!
+
+Hat_EyeBlockade = [owner] wants to destroy the @{~OC|Cage}!
+
+Hat_ChallengeRoomManhole = [owner] wants to enter a @{~OC|Manhole}!
+
+Hat_MudPuddle = [owner] wants to do be @{~OC|dirty}! Ew...
+
+Hat_StaticHidingActor = [owner] wants to @{~OC|hide}!
+
+; MOD SUPPORTS (You are welcome.)
+Jaw_CharacterStand = [owner] wants to @{~IC|customize their look}!
+Arg_PlayerSelectMachine = [owner] wants to @{~IC|swap their character}!
+Arg_CarryObject_Ball = @{>pings>default>Hat_CarryObject_BeachBall}
+Ink_Platform_DashPanel = [owner] wants to use the @{~OC|Dash Panel}!
+
+; Identities uses scripts to return the correct localization, making them more complex and unique than other ones.
+; Hardcoded, impossible to replace except with section like localization
+IDENTITY_GHOSTPLAYER = [owner] wants to go to [other]!
+IDENTITY_TOKEN_DJ = [owner] wants to collect a @{~IC|DJ Grooves Token}![icon=token_dj]
+IDENTITY_TOKEN_CONDUCTOR = [owner] wants to collect a @{~IC|Conductor Token}![icon=token_conductor]
+IDENTITY_ACT_SELECTOR = [color=Neon_Blue][owner] wants to head into @{~LC|>[chapter_name]|a chapter}![/color]
+IDENTITY_RIFT_PORTAL = [color=Neon_Blue][owner] wants to jump into @{~LC|>[rift_name]|a rift}![/color]
+
+IDENTITY_SNATCHERMINION_RECEIVED_MAIL = [owner] notes @{~NPC|Snatcher Minion} already recieved their @{~IC|mail}!
+IDENTITY_SNATCHERMINION_WAITING_FOR_MAIL = [owner] wants to @{~IC|deliver mail} to @{~NPC|Snatcher Minion}!
+
+IDENTITY_METROGATE_YELLOW = [color=#FFD312][owner] wants to use the @{~LC|Yellow Overpass Station} gate![icon=metro_yellow][/color]
+IDENTITY_METROGATE_GREEN = [color=#14FF7A][owner] wants to use the @{~LC|Green Clean Station} gate![icon=metro_green][/color]
+IDENTITY_METROGATE_BLUE = [color=#15DBFF][owner] wants to use the @{~LC|Bluefin Tunnel} gate![icon=metro_blue][/color]
+IDENTITY_METROGATE_PINK = [color=#FF117C][owner] wants to use the @{~LC|Pink Paw Station} gate![icon=metro_pink][/color]

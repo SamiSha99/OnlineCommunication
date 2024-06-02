@@ -1,0 +1,44 @@
+
+[general]
+
+; hardcoded official announcements handled through SS_Announcer_RadioOverride.uc
+
+FaucetClosed = [color=orange][color=yellow_lemon][announcer][/color] closed a @{~IC|Faucet}[/color][icon=fire]
+GoldenTicketGrabbed = [color=gold][color=yellow_lemon][announcer][/color] collected a @{~IC|Golden Vault Code}[/color][icon=ticket_gold]
+TimePieceGet = [color=neon_blue][color=yellow_lemon][announcer][/color] collected the[icon=TimePiece]for @{~LC|[act_name]}, congratulations![/color]
+
+[ghostparty]
+
+JoinActPopUp = [color=gold][owner] is heading to @{~LC|>[act_name]|}[/gold];
+
+[VanessasCurse]
+
+VanessaWin_0 = [color=ruby][owner] cursed the last kid for Team Vanessa![icon=soul][/color]
+VanessaWin_1 = [color=ruby][owner] caught the last [icon=soul] for Team Vanessa![/color]
+VanessaWin_2 = [color=ruby]Vanessa finally broke up with Snatcher thanks to [owner]![icon=soul][/color]
+
+SnatcherWin_0 = [color=gold][owner] claimed the last[icon=crown]for Team Snatcher![/color]
+SnatcherWin_1 = [color=gold][owner] scores one for Team Snatcher![icon=crown][/color]
+SnatcherWin_2 = [color=gold][owner] has finished the @{~IC|"Collect Crowns"}[icon=crown] contract with Team Snatcher![/color]
+
+; Extremely unreliable but happens if the last assummed player just fell off the map or disconnected + no tagging in the last ~6 seconds
+
+VanessaClumsyWin_0 = [color=ruby][owner] fell to a clumsy, painful death.[icon=soul][/color]
+VanessaClumsyWin_1 = [color=ruby][owner] bid farewell, cruel world![icon=soul][/color]
+
+VanessaUnknown = [color=ruby]Team Vanessa claimed a victory by getting all the souls![icon=soul][/color]
+
+SnatcherTimeUpWin_0 = [color=gold]Time's up! Snatcher got all the kids out![icon=crown][/color]
+SnatcherTimeUpWin_1 = [color=gold]Team Snatcher escaped just in time![icon=crown][/color]
+
+; Casual actions
+CrownCollected = [color=gold]A player has collected a crown![icon=crown][/color]
+PlayerTagged = [color=ruby]A player has been cursed![icon=soul][/color]
+
+[contracts]
+
+MainObjectiveComplete = [color=gold][owner] has completed the main objective of @{~IC|>[contract_name]|a contract}![icon=dw] Congratulations![/color]
+MainObjectivePassiveComplete = [color=gold][owner] has completed the main objective of @{~IC|>[contract_name]|a candle}![icon=dw_passive] Congratulations![/color]
+
+ContractPerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a contract}![icon=dw_gold] Congratulations![/color]
+PassivePerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a candle}![icon=dw_passive_gold] Congratulations![/color]

@@ -1,0 +1,13 @@
+# Created by SamiSha for A Hat in Time Modding folders for those who want to utilize git source control.
+
+# Compiled scripts can be rebuilt as needed
+CompiledScripts/*
+
+# CookedPC generated from Cook Mod button.
+CookedPC/*
+
+# Shadercache
+Shadercache/*
+
+# Private file with some sensitive paramaters
+Classes/Settings/SS_PingSystem_Private.uc

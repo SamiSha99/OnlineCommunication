@@ -1,0 +1,94 @@
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+; DO NOT TRANSLATE THIS FILE, THIS IS USED FOR SCRIPTING!!!!
+
+; IMPORTANT:
+; Add or set any key to "none" to strictly define that it should be avoided in those checks
+; good for children classes that their parents are already defined here.
+
+
+; These keys uses hit location of the ping trace instead of their literal location, recommended to walls and huge objects.
+[Mesh]
+
+StaticMeshActor = StaticMeshActor
+Hat_StaticRevealActor = Hat_StaticRevealActor
+Terrain = Terrain
+InterpActor = InterpActor
+SkeletalMeshActor = SkeletalMeshActor
+Hat_ImpactInteract_Base = Hat_ImpactInteract_Base
+Hat_Rope = Hat_Rope
+FluidSurfaceActor = FluidSurfaceActor
+Hat_DynamicStaticActor = Hat_DynamicStaticActor
+Hat_DecorationStand = Hat_DecorationStand
+Hat_PenguinMoonCar = Hat_PenguinMoonCar
+InstancedFoliageActor = InstancedFoliageActor
+Hat_CatDoor = Hat_CatDoor
+Hat_PlatformFall = Hat_PlatformFall
+Hat_PlatformRowingBoat = Hat_PlatformRowingBoat
+Hat_IdleMovement = Hat_IdleMovement
+Hat_LavaMesh = Hat_LavaMesh
+Hat_SpringBased_FatBird = Hat_SpringBased_FatBird
+Hat_MountainInfo = Hat_MountainInfo
+
+Drew_CinemaWalls = Drew_CinemaWalls 
+Drew_CinemaCurtains = Drew_CinemaCurtains 
+Drew_CinemaTable = Drew_CinemaTable 
+Drew_CinemaTabl2 = Drew_CinemaTabl2 
+Drew_CinemaMailDesk = Drew_CinemaMailDesk 
+
+; Anything defined here is ignored and will NEVER be a potential target
+; ClassName->Component means the actor is still a potential target except this component they own,
+; most of these components are huge collision boxes, which the collision trace will ignore to be more accurate
+[Ignore]
+
+Hat_TimePieceSphere = Hat_TimePieceSphere
+Hat_NPC_MoonPenguin_Moon = Hat_NPC_MoonPenguin_Moon->TouchCylinder0
+Hat_NPC = Hat_NPC->TouchCylinderComponent0
+Hat_ForestHouseShutter = Hat_ForestHouseShutter
+FluidSurfaceActor = FluidSurfaceActor
+Tag_Actor = Tag_Actor
+Hat_ModOnlinePlayerMessage = Hat_ModOnlinePlayerMessage
+Hat_FireLightingStrike = Hat_FireLightingStrike
+Hat_CruiseSinkingExplosion = Hat_CruiseSinkingExplosion
+
+WonderFlow_Flower_Base = WonderFlow_Flower_Base->TouchCylinderComponent0
+
+; Anything here will not attach to the actor that was targeted, these are mostly done to avoid Attach() from running and causing ping griefing (like triggering falling platforms)
+[DontAttach]
+
+Hat_Platform_Base = Hat_Platform_Base
+Hat_SpringBased = none
+Hat_DiveBoard = none
