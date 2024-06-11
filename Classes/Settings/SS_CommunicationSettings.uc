@@ -4,8 +4,8 @@ Class SS_CommunicationSettings extends Object
     dependsOn(SS_GameMod_PingSystem)
     Config(SSPing);
 
-const SETTINGS_VERSION = 8;
-const CHAT_SETTINGS_SAVE_PATH_NAME = "OnlineChat/Settings_v$.Hat";
+const SETTINGS_VERSION = 1;
+const CHAT_SETTINGS_SAVE_PATH_NAME = "OnlineCommunication/settings_v$.hat";
 const ERROR_COLOR = "#ED2939";
 
 var config int FileVersion;
