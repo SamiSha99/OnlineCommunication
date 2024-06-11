@@ -60,6 +60,9 @@ var config int ToggleOnlineChat;
 var config int ToggleAdditionalEmotes;
 var config int ToggleDebugging;
 
+// When it doesn't work, just let them open it manually.
+var config int OpenExpandedConfigMenu;
+
 var SS_CommunicationSettings ChatSettings;
 var SS_PanelContent_Config_Input ActiveInputContentPanel;
 var SS_HUDElement_OnlinePartyChat OnlineChatHUD;
@@ -680,9 +683,10 @@ function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
     if(String(InHUDElement) ~= "Hat_HUDMenuSettings")
     {
         modselect = Hat_HUDMenu_ModLevelSelect(Hat_HUD(InHUD).GetHUD(Class'Hat_HUDMenu_ModLevelSelect'));
-        if(modselect != None && modselect.PreviewMod.PackageName ~= "OnlineCommunication")
+
+        // to-do: run the check after a frame and see if the passed preview in this settings menu is the right one
+        if(modselect != None && (modselect.PreviewMod.PackageName ~= "OnlineCommunication" || modselect.PreviewMod.WorkshopId == GetGameModFromClass(Class).WorkshopID))
         {
-            // OpenConfigMenuViaLoadout(InHUD);
             SetTimer(0.01f, false, NameOf(OpenConfigMenuViaLoadout), self, InHUD);
         }
     }
@@ -718,6 +722,9 @@ function OnConfigChanged(Name ConfigName)
             else
                 Hat_HUD(GetALocalPlayerController().myHUD).CloseHUD(Class'SS_HUDElement_OnlinePartyChat');
             break;
+        case 'OpenExpandedConfigMenu':
+            OpenConfigMenuViaLoadout(GetALocalPlayerController().myHUD);
+            break;
     }
 }
 
@@ -742,7 +749,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
     if(InStr(parameters, "=") == INDEX_NONE) return;
     
     mapDict = Class'DictionaryTools'.static.BuildDictionaryArray(parameters);
-    
+
     switch(Class'SS_CommunicationSettings'.default.ChannelType)
     {
         // Friends Only
@@ -810,7 +817,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
             else
                 Class'DictionaryTools'.static.GetValueVector(loc, mapDict, "x", "y", "z");
             
-            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,x,y,z");
+            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,x,y,z,offsetRange,dirP,dirY,dirR");
             SpawnGhostPing(loc, localization, section, targetActor, Sender, keys);
             break;
         
@@ -833,7 +840,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
             break;
 
         default:
-            Print("NO COMMAND? WHAT THE ACTUAL FUCK????");
+            Print("NO COMMAND???");
             break;
     }
 }
