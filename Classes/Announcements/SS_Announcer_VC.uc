@@ -108,10 +108,10 @@ function ScoreChangeWatchDog()
     local Hat_GhostPartyPlayerState you;
     you = Hat_GhostPartyPlayerState(class'Hat_GhostPartyPlayerState'.static.GetLocalPlayerState(0));
     
-    Print("VC_GameState =>" @ you.GetPlayerStateMeta(Name('VC_GameState' $ "_" $ "VanessaCurse")));
-    Print("VC_NumPlayersInGame =>" @ you.GetPlayerStateMeta(Name('VC_NumPlayersInGame' $ "_" $ "VanessaCurse")));
-    Print("VC_CursedPlayersInGame =>" @ you.GetPlayerStateMeta(Name('VC_CursedPlayersInGame' $ "_" $ "VanessaCurse")));
-    Print("VC_PlayerId =>" @ you.GetPlayerStateMeta(Name('VC_PlayerId' $ "_" $ "VanessaCurse")));
+    // Print("VC_GameState =>" @ you.GetPlayerStateMeta(Name('VC_GameState' $ "_" $ "VanessaCurse")));
+    // Print("VC_NumPlayersInGame =>" @ you.GetPlayerStateMeta(Name('VC_NumPlayersInGame' $ "_" $ "VanessaCurse")));
+    // Print("VC_CursedPlayersInGame =>" @ you.GetPlayerStateMeta(Name('VC_CursedPlayersInGame' $ "_" $ "VanessaCurse")));
+    // Print("VC_PlayerId =>" @ you.GetPlayerStateMeta(Name('VC_PlayerId' $ "_" $ "VanessaCurse")));
 
     UpdateScoreList();
     
