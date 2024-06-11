@@ -44,7 +44,7 @@ static function Array<ConversationReplacement> BuildKeyReplacements(Array<Dictio
     local Dictionary d;
 
     foreach map(d)
-        if(Len(avoid) <= 0 || InStr(avoid, d.key, false, true) == INDEX_NONE) 
+        if(avoid == "" || InStr(avoid, d.key, false, true) == INDEX_NONE) 
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, d.key, d.value);
             
     return keys;
