@@ -1,9 +1,6 @@
 // For the Rift Portals in Spaceship for now, anything else will fallback.
 Class SS_PingIdentity_RiftPortal extends SS_PingIdentity;
 
-var Array < Hat_ChapterActInfo > waterActs; // blue
-var Array < Hat_ChapterActInfo > caveActs; // purple
-
 static function bool ProcessIdentity(Actor target, out string localizationString, out Array<ConversationReplacement> keys)
 {
     local string lk, rightMost;
@@ -43,9 +40,4 @@ static function int GetPriority()
 defaultproperties
 {
     IdentityName = "Hat_TimeRiftPortal";
-
-    waterActs.Add(Hat_ChapterActInfo'hatintime_chapterinfo.spaceship.Spaceship_WaterRift_Gallery');
-    waterActs.Add(Hat_ChapterActInfo'hatintime_chapterinfo.spaceship.Spaceship_WaterRift_MailRoom');
-
-    caveActs.Add(Hat_ChapterActInfo'hatintime_chapterinfo_dlc1.spaceship.CaveRift_Tour');
 }
