@@ -8,8 +8,7 @@ defaultproperties
     
     Begin Object Class=SS_PanelContent_ButtonURL Name=OpenHexPicker
         ContentName = "OpenHexPicker"
-        // URL = "https://htmlcolors.com/google-color-picker"
-        URL = "https://g.co/kgs/AKsgHmG"
+        URL = "https://sami.shakkour.dev/projects/color-reader"
         Localization = "OpenHexPicker_Button"
         Shine = true
     End Object
