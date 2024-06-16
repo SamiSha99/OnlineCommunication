@@ -105,8 +105,8 @@ function ScoreChangeWatchDog()
 {
     local int i;
     local WorldInfo wi;
-    local Hat_GhostPartyPlayerState you;
-    you = Hat_GhostPartyPlayerState(class'Hat_GhostPartyPlayerState'.static.GetLocalPlayerState(0));
+    // local Hat_GhostPartyPlayerState you;
+    // you = Hat_GhostPartyPlayerState(class'Hat_GhostPartyPlayerState'.static.GetLocalPlayerState(0));
     
     // Print("VC_GameState =>" @ you.GetPlayerStateMeta(Name('VC_GameState' $ "_" $ "VanessaCurse")));
     // Print("VC_NumPlayersInGame =>" @ you.GetPlayerStateMeta(Name('VC_NumPlayersInGame' $ "_" $ "VanessaCurse")));
