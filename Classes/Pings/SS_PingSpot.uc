@@ -10,14 +10,16 @@ var MaterialInterface AvatarMat;
 // to-do animate appearance
 var float ScaleTime, ScaleAmount;
 
+const SIZE_OFFSET = 0.025f;
+
 function PostBeginPlay()
 {
 	local Vector scale;
     Super.PostBeginPlay();
 	LifeSpan = Class'SS_Ping_Helpers'.static.GetLifeTime(); // to-do set up based on what it was specified by the player
-    scale.X = RandRange(0.1975, 0.2025);
-    scale.Y = RandRange(0.1975, 0.2025);
-    scale.Z = RandRange(0.1975, 0.2025);
+    scale.X = RandRange(0.2 - SIZE_OFFSET, 0.2 + SIZE_OFFSET);
+    scale.Y = RandRange(0.2 - SIZE_OFFSET, 0.2 + SIZE_OFFSET);
+    scale.Z = RandRange(0.2 - SIZE_OFFSET, 0.2 + SIZE_OFFSET);
     PingSphere.SetScale3D(scale);
     PingSphere.SetTranslation(vect(0,0,1)*RandRange(-0.05,0.05));
 }
