@@ -173,7 +173,7 @@ PingCrossHairSize_1 = The [color=gold]size[/color] of your [color=gold]Crosshair
 
 PingHotKey_0 = [color=#78eb36]Default: R[/color]
 PingHotKey_1 = Current Key: "[color=gold]@{~PHK}[/color]"
-PingHotKey_2 = The Keyboard Keybind for Pinging.
+PingHotKey_2 = The Keyboard Keybind for [color=gold]Pinging[/color].
 
 ExpandChatHotkey_0 = [color=#78eb36]Default: T[/color]
 ExpandChatHotkey_1 = Current Key: "[color=gold]@{~ECHK}[/color]"
@@ -212,7 +212,7 @@ LocationColor_Example_0 = [color=#78eb36]Default: [color=#4ECC27]#4ECC27[/color]
 LocationColor_Example_1 = @{>pings>default>Hat_TimeRiftGate}
 LocationColor_Example_2 = Adjust the color of @{~LC|locations}.
 
-ImportantColor_Example_0 = [color=#78eb36]Default: [color=#E137FA]#E137FA[/color][/color]
+ImportantColor_Example_0 = [color=#78eb36]Default: [color=#FF8C2E]#FF8C2E[/color][/color]
 ImportantColor_Example_1 = [owner] wants to collect the @{~IC|Time Piece}!
 ImportantColor_Example_2 = Adjust the color of @{~IC|very important tasks/items}.
 

@@ -13,7 +13,7 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_Config_InputKey Name=PingHotKey 
         ContentName = "PingHotKey"
-        Tooltips = ("PingHotKey_0", "PingHotKey_1")
+        Tooltips = ("PingHotKey_0", "PingHotKey_1", "PingHotKey_2")
     End Object
     Contents.Add(PingHotKey);
 
