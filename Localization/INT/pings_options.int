@@ -84,6 +84,8 @@ Hat_ModOnlinePlayerMessage = Hat_ModOnlinePlayerMessage
 Hat_FireLightingStrike = Hat_FireLightingStrike
 Hat_CruiseSinkingExplosion = Hat_CruiseSinkingExplosion
 
+Hat_HouseRoomVolume = Hat_HouseRoomVolume
+
 WonderFlow_Flower_Base = WonderFlow_Flower_Base->TouchCylinderComponent0
 
 ; Anything here will not attach to the actor that was targeted, these are mostly done to avoid Attach() from running and causing ping griefing (like triggering falling platforms)
