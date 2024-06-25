@@ -3,9 +3,9 @@
 
 ; hardcoded official announcements handled through SS_Announcer_RadioOverride.uc
 
-FaucetClosed = [color=orange][color=yellow_lemon][announcer][/color] closed a @{~IC|Faucet}[/color][icon=fire]
-GoldenTicketGrabbed = [color=gold][color=yellow_lemon][announcer][/color] collected a @{~IC|Golden Vault Code}[/color][icon=ticket_gold]
-TimePieceGet = [color=neon_blue][color=yellow_lemon][announcer][/color] collected the[icon=TimePiece]for @{~LC|[act_name]}, congratulations![/color]
+FaucetClosed = [color=orange][color=yellow_lemon][announcer][/color] closed a @{~IC|Faucet}![/color][icon=fire]
+GoldenTicketGrabbed = [color=gold][color=yellow_lemon][announcer][/color] collected a @{~IC|Golden Vault Code}![/color][icon=ticket_gold]
+TimePieceGet = [color=#528BFF][color=yellow_lemon][announcer][/color] collected the[icon=TimePiece]for @{~LC|[act_name]}, congratulations![/color]
 
 [ghostparty]
 
