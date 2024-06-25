@@ -31,7 +31,7 @@ const DEFAULT_PLAYER_COLOR = "#FFFFFF";
 const DEFAULT_ENEMY_COLOR = "#FF3A3C";
 const DEFAULT_NPC_COLOR = "#459DF5";
 const DEFAULT_OBJECT_COLOR = "#FDFD30";
-const DEFAULT_IMPORTANT_COLOR = "#E137FA";
+const DEFAULT_IMPORTANT_COLOR = "#FF8C2E";
 const DEFAULT_LOCATION_COLOR = "#4ECC27";
 
 // Link to a SoundCue from ANY loaded package for personal usage or literally pin point to any mod package installed.
