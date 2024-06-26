@@ -20,7 +20,8 @@ Hat_TimeObject_Base = [owner] wants to collect the @{~IC|Parade Surprise}![icon=
 
 [hub_spaceship]
 Hat_NPC_ExpressBand_0 = [owner] wants the @{~NPC|Express Owls} to @{~IC|play a tune}!
-Hat_Bench_SpaceshipChair_3 = [owner] wants to drive the @{~IC|spaceship} and return @{~LC|home}!
+Hat_Bench_SpaceshipChair_3 = [owner] wants to drive the @{~LC|spaceship} and return @{~LC|home}!
+Hat_ImpactInteract_Spring_0 = [owner] wants to play @{~IC|Vanessa's Curse}!
 
 [default]
 
@@ -152,6 +153,7 @@ Hat_Hazard_CatTrain = [owner] warns of the @{~EC|Big Cat}!
 Hat_Hazard_MuLaser = [owner] warns of @{~EC|Mustache Girl's Laser}!
 Hat_Hazard_SplashWave = [owner] warns of the @{~EC|Splash Wave}!
 Hat_Hazard_Urchin = [owner] warns of the @{~EC|Urchin}!
+Hat_Hazard_FallingIce = [owner] warns of the @{~EC|Falling Ice}!
 ; not one, but still
 Hat_Hazard_MafiaBall_Finale = [owner] wants to kick the @{~IC|Mafia Ball}!
 
