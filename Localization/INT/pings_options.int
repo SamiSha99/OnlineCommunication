@@ -62,6 +62,7 @@ Hat_IdleMovement = Hat_IdleMovement
 Hat_LavaMesh = Hat_LavaMesh
 Hat_SpringBased_FatBird = Hat_SpringBased_FatBird
 Hat_MountainInfo = Hat_MountainInfo
+Hat_SpringBased_BouncyCastle = Hat_SpringBased_BouncyCastle
 
 Drew_CinemaWalls = Drew_CinemaWalls 
 Drew_CinemaCurtains = Drew_CinemaCurtains 
