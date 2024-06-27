@@ -4,7 +4,9 @@
 
 ---
 
-# An A Hat in Time Mod
+# An A Hat in Time Mod for the Steam Workshop
+
+**Download the mod from the Steam Workshop [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3276508705).**
 
 **See the [Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki) for any questions or help.**
 
