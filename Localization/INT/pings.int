@@ -160,6 +160,7 @@ Hat_Hazard_MafiaBall_Finale = [owner] wants to kick the @{~IC|Mafia Ball}!
 Hat_Flamethrower = [owner] warns of the @{~EC|Flamethrower}!
 
 Hat_LavaMesh = [owner] warns of the @{~EC|Lava}!
+Hat_SwampMesh = [owner] warns of the @{~EC|Creepy Swamp}!
 Hat_LavaFish = [owner] warns of the @{~EC|Lava Fish}!
 Hat_ToxicFlower = [owner] warns of the @{~EC|Toxic Flower}!
 
@@ -262,6 +263,8 @@ Hat_Door = [owner] wants to go through a @{~LC|door}!
 Hat_DoorTrain = @{>pings>default>Hat_Door}
 Hat_Button_Base = [owner] wants to push the @{~OC|button}!
 Hat_ShipHologram = [owner] wants to look at the @{~OC|Ship Hologram}!
+
+Hat_MetroTicketBooth = [owner] wants to purchase a @{~IC|Metro Ticket} [icon=metro_yellow]!
 
 Hat_SandStationHorn = [owner] wants to blow the ~{IC|horn}! 
 
