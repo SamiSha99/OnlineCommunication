@@ -10,7 +10,7 @@ var MaterialInterface AvatarMat;
 // to-do animate appearance
 var float ScaleTime, ScaleAmount;
 
-const SIZE_OFFSET = 0.025f;
+const SIZE_OFFSET = 0.0025f;
 
 function PostBeginPlay()
 {
