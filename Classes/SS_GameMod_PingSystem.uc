@@ -61,7 +61,7 @@ var config int ToggleAdditionalEmotes;
 var config int ToggleDebugging;
 
 // When it doesn't work, just let them open it manually.
-var config int OpenExpandedConfigMenu;
+// var config int OpenExpandedConfigMenu;
 
 var SS_CommunicationSettings ChatSettings;
 var SS_PanelContent_Config_Input ActiveInputContentPanel;
@@ -725,7 +725,7 @@ function OnConfigChanged(Name ConfigName)
                 Hat_HUD(GetALocalPlayerController().myHUD).CloseHUD(Class'SS_HUDElement_OnlinePartyChat');
             break;
         case 'OpenExpandedConfigMenu':
-            OpenConfigMenuViaLoadout(GetALocalPlayerController().myHUD);
+            // OpenConfigMenuViaLoadout(GetALocalPlayerController().myHUD);
             break;
     }
 }
