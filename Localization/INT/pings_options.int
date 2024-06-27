@@ -60,6 +60,7 @@ Hat_PlatformFall = Hat_PlatformFall
 Hat_PlatformRowingBoat = Hat_PlatformRowingBoat
 Hat_IdleMovement = Hat_IdleMovement
 Hat_LavaMesh = Hat_LavaMesh
+Hat_SwampMesh = Hat_SwampMesh
 Hat_SpringBased_FatBird = Hat_SpringBased_FatBird
 Hat_MountainInfo = Hat_MountainInfo
 Hat_SpringBased_BouncyCastle = Hat_SpringBased_BouncyCastle
