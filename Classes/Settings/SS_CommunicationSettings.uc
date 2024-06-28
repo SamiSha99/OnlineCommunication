@@ -5,10 +5,12 @@ Class SS_CommunicationSettings extends Object
     Config(SSPing);
 
 const SETTINGS_VERSION = 1;
+const SETTINGS_VERSION_SOFT = 2; // Soft change for some configs into their original defaults.
 const CHAT_SETTINGS_SAVE_PATH_NAME = "OnlineCommunication/settings_v$.hat";
 const ERROR_COLOR = "#ED2939";
 
 var config int FileVersion;
+var config int FileSoftVersion;
 
 var SS_GameMod_PingSystem GameMod;
 
@@ -18,6 +20,8 @@ var float ChatClippedXLimit;
 var Vector2D ChatPosClipped;
 var config float GlobalScale;
 var config string ChatEmoteTextColor; //Lime color, can be changed
+
+var config bool EnableEmotes;
 
 // Colors in Hexdecimals (Alpha always 100%)
 var config string PlayerColor; // Defaults to White unless specified.
@@ -155,8 +159,9 @@ function int GetSettingInt(coerce string SettingName, optional bool GetDefault =
         case "EnableJoin":              return (GetDefault ? 1 : (EnableJoin ? 1 : 0));
         case "EnableConnectionFailed":  return (GetDefault ? 1 : (EnableConnectionFailed ? 1 : 0));
         case "EnableLeave":             return (GetDefault ? 1 : (EnableLeave ? 1 : 0));
-        case "DontSendIfOutOfRange":    return (GetDefault ? 1 : (DontSendIfOutOfRange ? 1 : 0));
-        case "AllowHatHelperToAttract": return (GetDefault ? 1 : (AllowHatHelperToAttract ? 1 : 0));
+        case "DontSendIfOutOfRange":    return (GetDefault ? 0 : (DontSendIfOutOfRange ? 1 : 0));
+        case "AllowHatHelperToAttract": return (GetDefault ? 0 : (AllowHatHelperToAttract ? 1 : 0));
+        case "EnableEmotes":            return (GetDefault ? 1 : (EnableEmotes ? 1 : 0));
         // Ints
         case "ChannelType":             return (GetDefault ? 0 : (ChannelType));
         case "StartingLineType":        return (GetDefault ? 0 : (StartingLineType));
@@ -214,17 +219,18 @@ function bool SetSettingInt(coerce string SettingName, int value)
     switch(SettingName)
     {
         // Bools
-        case "EnableVanessaCurse":          EnableVanessaCurse = value >= 1;     SaveConfig(); return true;
-        case "EnableDeathWish":             EnableDeathWish = value >= 1;        SaveConfig(); return true;
-        case "EnableTimePiece":             EnableTimePiece = value >= 1;        SaveConfig(); return true;
-        case "EnableJoin":                  EnableJoin = value >= 1;             SaveConfig(); return true;
-        case "EnableConnectionFailed":      EnableConnectionFailed = value >= 1; SaveConfig(); return true;
-        case "EnableLeave":                 EnableLeave = value >= 1;            SaveConfig(); return true;
-        case "DontSendIfOutOfRange":        DontSendIfOutOfRange = value >= 1;   SaveConfig(); return true;
-        case "AllowHatHelperToAttract":     AllowHatHelperToAttract = value >= 1;SaveConfig(); return true;
-        // Ints
-        case "ChannelType":                 ChannelType = value;                 SaveConfig(); return true;
-        case "StartingLineType":            StartingLineType = value;            SaveConfig(); return true;
+        case "EnableVanessaCurse":          EnableVanessaCurse = value >= 1;        SaveConfig(); return true;
+        case "EnableDeathWish":             EnableDeathWish = value >= 1;           SaveConfig(); return true;
+        case "EnableTimePiece":             EnableTimePiece = value >= 1;           SaveConfig(); return true;
+        case "EnableJoin":                  EnableJoin = value >= 1;                SaveConfig(); return true;
+        case "EnableConnectionFailed":      EnableConnectionFailed = value >= 1;    SaveConfig(); return true;
+        case "EnableLeave":                 EnableLeave = value >= 1;               SaveConfig(); return true;
+        case "DontSendIfOutOfRange":        DontSendIfOutOfRange = value >= 1;      SaveConfig(); return true;
+        case "AllowHatHelperToAttract":     AllowHatHelperToAttract = value >= 1;   SaveConfig(); return true;
+        case "EnableEmotes":                EnableEmotes = value >= 1;              SaveConfig(); return true;
+        // Ints 
+        case "ChannelType":                 ChannelType = value;                    SaveConfig(); return true;
+        case "StartingLineType":            StartingLineType = value;               SaveConfig(); return true;
     }
     return false;
 }
@@ -252,6 +258,7 @@ function ResetToDefault()
 
     // This should be incremented
     FileVersion = SETTINGS_VERSION;
+    FileSoftVersion = SETTINGS_VERSION_SOFT;
 
     PlayerColor = DEFAULT_PLAYER_COLOR;
     EnemyColor = DEFAULT_ENEMY_COLOR;
@@ -267,6 +274,7 @@ function ResetToDefault()
     EnableConnectionFailed = true;
     EnableLeave = true;
     
+    EnableEmotes = true;
 
     GlobalScale = 1.0f;
     ChatLifeTime = 10.0f;
@@ -300,6 +308,15 @@ function ResetToDefault()
     SaveConfig();
 }
 
+function SoftVersionApply()
+{
+    Class'SS_GameMod_PingSystem'.static.Print("Soft Version Mismatch, updating some settings to their new/current defaults.");
+    Class'SS_GameMod_PingSystem'.static.Print("EnableEmotes =" @ EnableEmotes);
+    FileSoftVersion = SETTINGS_VERSION_SOFT;
+    EnableEmotes = true;
+    SaveConfig();
+}
+
 static function bool LoadChatSettings(out SS_CommunicationSettings ChatSettings) 
 {
 
@@ -314,6 +331,8 @@ static function bool LoadChatSettings(out SS_CommunicationSettings ChatSettings)
         ChatSettings.ResetToDefault();
         return false;
     }
+
+    if(ChatSettings.FileSoftVersion != SETTINGS_VERSION_SOFT) ChatSettings.SoftVersionApply();
 
     Class'SS_GameMod_PingSystem'.static.Print("Settings loaded successfully!");
     return true;

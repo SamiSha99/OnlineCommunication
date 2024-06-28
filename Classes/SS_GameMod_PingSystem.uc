@@ -222,9 +222,9 @@ function TickGhost(float d)
     }
     if(AnnouncerManager != None) AnnouncerManager.GhostTick(d);
     ValidateLocalInfo();
+    
     PreEmoteListeningCheck();
     ListenToEmotes();
-
     nextCheckTime = WorldInfo.RealTimeSeconds;
 }
 
@@ -546,7 +546,7 @@ function ListenToEmotes()
         GhostReader[i].LastEmoteMessageTime = GhostReader[i].ObjectiveActor.EmoteMessageTime;
         flag = GhostReader[i].ObjectiveActor;
 
-        if(OnlineChatHUD != None)
+        if(OnlineChatHUD != None && Class'SS_CommunicationSettings'.default.EnableEmotes)
         {
             keys.Length = 0;
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", GhostReader[i].SteamID$"_"$GhostReader[i].SubID);
@@ -571,7 +571,7 @@ function ListenToEmotes()
         flag = LocalReader[i].player.ObjectiveActor_GhostParty;
         LocalReader[i].LastEmoteMessageTime = flag.EmoteMessageTime;
         
-        if(OnlineChatHUD != None)
+        if(OnlineChatHUD != None && Class'SS_CommunicationSettings'.default.EnableEmotes)
         {
             keys.Length = 0;
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", LocalReader[i].SteamID$"_"$LocalReader[i].SubID);

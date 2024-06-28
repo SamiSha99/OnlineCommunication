@@ -42,6 +42,8 @@ DontSendIfOutOfRange = Mute Ping If Too Far
 AllowHatHelperToAttract = Ping Attracts Helper Hat
 
 ; Chat
+EnableEmotes = Toggle Emotes
+
 GlobalScale = Chat Font Size
 ChatClippedXLimit = Chat Width Scale
 ChatEmoteTextColor = Emote Text Color
@@ -244,6 +246,9 @@ ChatClippedXLimit_1 = The [color=gold]width[/color] of the Chat Box as a [color=
 
 StartingLineType_0 = [color=#78eb36]Default: Asterisk | *[/color]
 StartingLineType_1 = Adds an indicator at the beginning of each chat message.
+
+EnableEmotes_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+EnableEmotes_1 = Toggles whether to show [color=gold]Emotes of other players[/color] in the chat.
 
 ; ANNOUNCEMENTS
 

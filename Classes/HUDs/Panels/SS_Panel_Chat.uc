@@ -20,8 +20,22 @@ defaultproperties
         ContentName = "ToggleAdditionalEmotes"
         ToolTips = ("ToggleAdditionalEmotes_0", "ToggleAdditionalEmotes_1", "ToggleAdditionalEmotes_2");
     End Object
+    Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableEmotes
+        ContentName = "EnableEmotes"
+        IsModConfig = false
+        Config = {(
+            ID = "EnableDeathWish",
+            Name = "EnableDeathWish",
+            Description = "EnableVanessaCurse_Desc",
+            Default = 1,
+            OptionValues = {(0, 1)},
+            OptionLabels = {("Off", "On")}
+        )}
+        ToolTips = ("EnableEmotes_0", "EnableEmotes_1");
+    End Object
     Contents.Add(ToggleOnlineChat);
     Contents.Add(ToggleAdditionalEmotes);
+    Contents.Add(EnableEmotes);
 
     Begin Object Class=SS_PanelContent_Header Name=ChatBoxHeader
         Header = "ChatBoxHeader"
