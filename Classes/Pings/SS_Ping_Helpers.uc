@@ -132,7 +132,7 @@ static function Hat_GhostPartyPlayerState GetLocalPlayerState(optional int subID
 */
 static function int GetFailedConnectionTimeOutDuration()
 {
-    return 300;
+    return 150;
 }
 
 static function bool IsPlayerStateTimedOut(Array<GhostTimeOut> GhostsTimeOut, Hat_GhostPartyPlayerStateBase playerState)
