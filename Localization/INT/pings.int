@@ -68,6 +68,8 @@ Hat_Collectible_MurderClue = [owner] wants to collect a @{~IC|Murder Clue}!
 
 Hat_Collectible_TimeBonus = [owner] wants to collect @{~IC|[color=#1fff00]+20[/color] Extra Time}!
 
+Hat_Collectible_Sticker = [owner] wants to collect a @{~IC|sticker}!
+
 ; PLATFORMING
 Hat_Platform_Base = [owner] wants to use a @{~OC|Platform}!
 Hat_PlatformFall = [owner] wants to use a @{~OC|Falling Platform}!
