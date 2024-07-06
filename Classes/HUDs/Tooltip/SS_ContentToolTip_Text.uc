@@ -53,7 +53,7 @@ function SS_GameMod_PingSystem GetGameMod()
 function string GetLocalization(string loc)
 {
     local string l;
-    l = Class'SS_ChatFormatter'.static.GetSettingsLocalization(loc, "tooltip");
+    l = Class'SS_HUDMenu_PingSystemConfig'.static.GetSettingsLocalization(loc, "tooltip");
     
     return Class'Hat_Localizer'.static.ContainsErrorString(l) ? loc : l;
 }

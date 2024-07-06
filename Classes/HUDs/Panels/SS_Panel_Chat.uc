@@ -16,26 +16,43 @@ defaultproperties
         ContentName = "ToggleOnlineChat"
         ToolTips = ("ToggleOnlineChat_0", "ToggleOnlineChat_1");
     End Object
+    Contents.Add(ToggleOnlineChat);
+
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ToggleAdditionalEmotes
         ContentName = "ToggleAdditionalEmotes"
         ToolTips = ("ToggleAdditionalEmotes_0", "ToggleAdditionalEmotes_1", "ToggleAdditionalEmotes_2");
     End Object
+    Contents.Add(ToggleAdditionalEmotes);
+
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableEmotes
         ContentName = "EnableEmotes"
         IsModConfig = false
         Config = {(
-            ID = "EnableDeathWish",
-            Name = "EnableDeathWish",
-            Description = "EnableVanessaCurse_Desc",
+            ID = "EnableEmotes",
+            Name = "EnableEmotes",
+            Description = "EnableEmotes_Desc",
             Default = 1,
             OptionValues = {(0, 1)},
             OptionLabels = {("Off", "On")}
         )}
         ToolTips = ("EnableEmotes_0", "EnableEmotes_1");
     End Object
-    Contents.Add(ToggleOnlineChat);
-    Contents.Add(ToggleAdditionalEmotes);
     Contents.Add(EnableEmotes);
+
+    Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ShowWhoHasMod
+        ContentName = "ShowWhoHasMod"
+        IsModConfig = false
+        Config = {(
+            ID = "ShowWhoHasMod",
+            Name = "ShowWhoHasMod",
+            Description = "ShowWhoHasMod_Desc",
+            Default = 1,
+            OptionValues = {(0, 1)},
+            OptionLabels = {("Off", "On")}
+        )}
+        ToolTips = ("ShowWhoHasMod_0", "ShowWhoHasMod_1", "ShowWhoHasMod_2");
+    End Object
+    Contents.Add(ShowWhoHasMod);
 
     Begin Object Class=SS_PanelContent_Header Name=ChatBoxHeader
         Header = "ChatBoxHeader"

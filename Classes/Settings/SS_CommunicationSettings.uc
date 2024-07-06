@@ -5,7 +5,7 @@ Class SS_CommunicationSettings extends Object
     Config(SSPing);
 
 const SETTINGS_VERSION = 1;
-const SETTINGS_VERSION_SOFT = 2; // Soft change for some configs into their original defaults.
+const SETTINGS_VERSION_SOFT = 3; // Soft change for some configs into their original defaults.
 const CHAT_SETTINGS_SAVE_PATH_NAME = "OnlineCommunication/settings_v$.hat";
 const ERROR_COLOR = "#ED2939";
 
@@ -22,6 +22,7 @@ var config float GlobalScale;
 var config string ChatEmoteTextColor; //Lime color, can be changed
 
 var config bool EnableEmotes;
+var config bool ShowWhoHasMod;
 
 // Colors in Hexdecimals (Alpha always 100%)
 var config string PlayerColor; // Defaults to White unless specified.
@@ -106,8 +107,8 @@ function bool GetColorBySteamID(string SteamID_Index, out string HexColor, out s
     foreach GameMod.GhostReader(eci)
     {
         if(!(eci.SteamID ~= SteamID)) continue;
-        HexColor = eci.PlayerState.GetPlayerStateMeta(NameOf(Class'SS_CommunicationSettings'.default.PlayerColor), "#FFFFFF");
-        if(HexColor == "") HexColor = "#FFFFFF";
+        HexColor = eci.PlayerState.GetPlayerStateMeta(NameOf(Class'SS_CommunicationSettings'.default.PlayerColor), Class'SS_CommunicationSettings'.default.ShowWhoHasMod ? "#A8A8A8" : "#FFFFFF");
+        if(HexColor == "") HexColor = Class'SS_CommunicationSettings'.default.ShowWhoHasMod ? "#A8A8A8" : "#FFFFFF";
         SteamName = Class'SS_Ping_Helpers'.static.GetGhostName(eci, INDEX_NONE, GameMod.StreamerMode);
         return true;
     }
@@ -162,6 +163,7 @@ function int GetSettingInt(coerce string SettingName, optional bool GetDefault =
         case "DontSendIfOutOfRange":    return (GetDefault ? 0 : (DontSendIfOutOfRange ? 1 : 0));
         case "AllowHatHelperToAttract": return (GetDefault ? 0 : (AllowHatHelperToAttract ? 1 : 0));
         case "EnableEmotes":            return (GetDefault ? 1 : (EnableEmotes ? 1 : 0));
+        case "ShowWhoHasMod":           return (GetDefault ? 1 : (ShowWhoHasMod ? 1 : 0));
         // Ints
         case "ChannelType":             return (GetDefault ? 0 : (ChannelType));
         case "StartingLineType":        return (GetDefault ? 0 : (StartingLineType));
@@ -228,6 +230,7 @@ function bool SetSettingInt(coerce string SettingName, int value)
         case "DontSendIfOutOfRange":        DontSendIfOutOfRange = value >= 1;      SaveConfig(); return true;
         case "AllowHatHelperToAttract":     AllowHatHelperToAttract = value >= 1;   SaveConfig(); return true;
         case "EnableEmotes":                EnableEmotes = value >= 1;              SaveConfig(); return true;
+        case "ShowWhoHasMod":               ShowWhoHasMod = value >= 1;             SaveConfig(); return true;
         // Ints 
         case "ChannelType":                 ChannelType = value;                    SaveConfig(); return true;
         case "StartingLineType":            StartingLineType = value;               SaveConfig(); return true;
@@ -275,6 +278,7 @@ function ResetToDefault()
     EnableLeave = true;
     
     EnableEmotes = true;
+    ShowWhoHasMod = true;
 
     GlobalScale = 1.0f;
     ChatLifeTime = 10.0f;
@@ -311,9 +315,11 @@ function ResetToDefault()
 function SoftVersionApply()
 {
     Class'SS_GameMod_PingSystem'.static.Print("Soft Version Mismatch, updating some settings to their new/current defaults.");
-    Class'SS_GameMod_PingSystem'.static.Print("EnableEmotes =" @ EnableEmotes);
     FileSoftVersion = SETTINGS_VERSION_SOFT;
     EnableEmotes = true;
+    ShowWhoHasMod = true;
+    Class'SS_GameMod_PingSystem'.static.Print("EnableEmotes =" @ EnableEmotes);
+    Class'SS_GameMod_PingSystem'.static.Print("ShowWhoHasMod =" @ ShowWhoHasMod);
     SaveConfig();
 }
 

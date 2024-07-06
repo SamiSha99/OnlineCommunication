@@ -13,7 +13,7 @@ var SS_HUDMenu_PingSystemConfig ConfigMenu;
 // Panel
 var name PanelName;
 var MaterialInterface PanelIcon;
-var ChatButton PanelButton;
+var OCButton PanelButton;
 var float FocusAmount, FocusProgress;
 
 var Color BackgroundColor;
@@ -71,7 +71,7 @@ function RenderPanel(HUD H, float backgroundWidth, float backgroundHeight, float
     
     Class'SS_Color'.static.SetDrawColor(H, 255, 255, 255, 255);
 
-    msg = Class'SS_ChatFormatter'.static.GetSettingsLocalization(PanelName, "panels");
+    msg = Class'SS_HUDMenu_PingSystemConfig'.static.GetSettingsLocalization(PanelName, "panels");
     H.Canvas.Font = GetChatFont(msg);
     
     DrawBorderedText(H.Canvas, msg, (title.X + 0.01f) * H.Canvas.ClipX, title.Y, 0.8f * scale, true, TextAlign_Left);
@@ -169,7 +169,7 @@ function bool RenderPanelButton(HUD H, Vector2d pos, optional float preScale = 1
 {
     local bool isHovering;
     local float focus;
-    local ChatButton button;
+    local OCButton button;
 
     button = PanelButton;
     focus = PanelButton.Size.Y/8 * FocusAmount * preScale; // +12.5%
@@ -191,7 +191,7 @@ function RenderToolTip(HUD H, float backgroundWidth, float backgroundHeight, flo
     HoveredContent.ToolTip.Render(H, self, 0.675f, 0.5 - backgroundHeight/H.Canvas.ClipY/2 + 0.025);
 }
 
-function RenderButton(HUD H, out ChatButton cb, Vector2D pos)
+function RenderButton(HUD H, out OCButton cb, Vector2D pos)
 {
     local bool isHovering;
 
@@ -215,7 +215,7 @@ function BuildPanelButton(int index)
     PanelButton.ButtonID = 'Panel';
     PanelButton.Argument = Name(""$Index);
     PanelButton.Material = PanelIcon;
-    PanelButton = Class'SS_ChatFormatter'.static.BuildButton(PanelButton); 
+    PanelButton = Class'SS_Button'.static.BuildButton(PanelButton); 
 }
 
 function BuildPanel()
@@ -251,7 +251,7 @@ function bool OnClick(HUD H, bool release)
     local int i;
     local string ButtonID, Argument;
     local Array<string> Splits;
-    local ChatButton b;
+    local OCButton b;
     local SS_GameMod_PingSystem GM;
 
     if(release)
@@ -411,7 +411,7 @@ function OnRelease(HUD H)
     PressedButton = None;
 }
 
-function OnHover(HUD H, ChatButton CB)
+function OnHover(HUD H, OCButton CB)
 {
     HighlightedButton = CB.ButtonID $ "_" $ CB.Argument;
     if(LastHighlightedButton ~= "" || ConfigMenu.IsUsingKeys && !(LastHighlightedButton ~= HighlightedButton))

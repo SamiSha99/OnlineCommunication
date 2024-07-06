@@ -4,7 +4,9 @@ Class SS_GameMod_PingSystem extends GameMod
 
 struct EmoteChatInfo
 {
-    // we value your uh... privacy? in this economy????
+    var Hat_GhostPartyPlayerStateBase PlayerState;
+    var SS_PingSpot PingSpot;
+
     var string SteamName;
     var string SteamID;
     var byte SubID; // For coop ghosts
@@ -14,10 +16,6 @@ struct EmoteChatInfo
     var float LastEmoteMessageTime;
     var Hat_ObjectiveActor_GhostPartyPlayer ObjectiveActor;
     
-    var Hat_GhostPartyPlayerStateBase PlayerState;
-
-    var SS_PingSpot PingSpot;
-
     // Inspired by this video: https://www.youtube.com/watch?v=mMiXr-3lQh8
     var float MuteTime, PingCastMuteTime;
     // Desperation for ping spams, mute time is frozen when ping limited

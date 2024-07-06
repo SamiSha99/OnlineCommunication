@@ -1,6 +1,6 @@
 Class SS_PanelScrollBar extends Component;
 
-var Array<ChatButton> Buttons;
+var Array<OCButton> Buttons;
 
 var float maxScrollYPos;
 var float scrollPoint; // from 0 - 1
@@ -17,7 +17,7 @@ var float MouseClickY;
 
 function Init() 
 {
-    Buttons = Class'SS_ChatFormatter'.static.BuildButtons(Buttons);
+    Buttons = Class'SS_Button'.static.BuildButtons(Buttons);
     simulatedScroll = 0;
     scrollPoint = 0;
 }
@@ -32,7 +32,7 @@ function RenderScrollBar(HUD H, SS_Panel p, float maskHeight, Vector2D pos)
 {
     local float maskHeightClipped;
     local float topY, bottomY, y, x;
-    local ChatButton cb;
+    local OCButton cb;
     local float dragY;
 
     maskHeight *= 0.8334f;
@@ -97,7 +97,7 @@ function Tick(HUD H, SS_Panel p, float d)
 
 function OnClick(HUD H, string Argument, SS_Panel p)
 {
-    local ChatButton b;
+    local OCButton b;
     switch(Argument)
     {
         case "hold": 

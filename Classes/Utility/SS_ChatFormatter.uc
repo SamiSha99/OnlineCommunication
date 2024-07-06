@@ -7,6 +7,7 @@ struct ChatLogSegment
     var Surface Icon;
     var Color Color;
     var bool AddSpace;
+    var Array<Dictionary> Formats; // List of formats to flavor text!
     structdefaultproperties
     {
         AddSpace = true;
@@ -35,41 +36,6 @@ struct OnlineChatLogInfo
         Color = (R=255, G=255, B=255);
         lifetime = 5;
         Combo = 1;
-    }
-};
-
-struct ChatButton
-{
-    var name ButtonID;
-    var name Argument;
-    var string tooltip;
-    
-    var bool CanBeHovered;
-    var bool BeingHovered;
-    // Size in pixels
-    var Vector2D size; 
-    var bool AvoidStretch;
-    var name uvSizeParamName;
-
-    // Icon offset
-    var name offsetParamName;
-    var Vector2d offset;
-
-    // Shiny that is random
-    var bool Shine;
-    //var Vector2d ShineIntervalRange;
-
-    var MaterialInterface Material;
-    var MaterialInstanceTimeVarying MatInstance;
-    
-    structdefaultproperties
-    {
-        CanBeHovered = true;
-        AvoidStretch = true;
-        Shine = false;
-        uvSizeParamName = "uvSize";
-        offsetParamName = "offset";
-        Size = (X = 48, Y = 48);
     }
 };
 
@@ -113,82 +79,10 @@ static function OnlineChatLogInfo BuildChatLog(string msg)
     return l;
 }
 
-static function Array<ChatButton> BuildButtons(Array<ChatButton> buttons)
-{
-    local int i;
-
-    for(i = 0; i < buttons.length; i++) buttons[i] = BuildButton(buttons[i]);
-    
-    return buttons;
-}
-
-static function ChatButton BuildButton(ChatButton b)
-{
-    local MaterialInstanceTimeVarying instance;
-    local LinearColor cl;
-    local Vector2d uvSize;
-    local Name uvSizeParam, offsetParam;
-    instance = new Class'MaterialInstanceTimeVarying';
-    instance.SetParent(b.Material);
-    b.MatInstance = instance;
-
-    //b.size = size;
-    uvSize = vect2d(1.0f, 1.0f);
-
-    uvSizeParam = b.uvSizeParamName;
-    
-    if(b.MatInstance.IsValidParameter(uvSizeParam))
-    {
-        uvSize = CalculateButtonUVSize(b.Size.X, b.Size.Y);
-        cl = MakeLinearColor(uvSize.X, uvSize.Y, 0, 0);
-        b.MatInstance.SetVectorParameterValue(uvSizeParam, cl);
-    }
-    else
-        Print("[CHAT FORMATTER] THE SPECIFIED UV SIZE IS INVALID PARAMETER IN THE MATERIAL");
-
-    offsetParam = b.offsetParamName;
-    if(b.MatInstance.IsValidParameter(offsetParam))
-    {    
-        cl.R = b.Offset.X;
-        cl.G = b.Offset.Y;
-        b.MatInstance.SetVectorParameterValue(offsetParam, cl);
-    }
-    else
-        Print("[CHAT FORMATTER] THE SPECIFIED OFFSET IS INVALID PARAMETER IN THE MATERIAL");
-
-    if(b.MatInstance.IsValidParameter('Shine'))
-        b.MatInstance.SetScalarParameterValue('Shine',  b.Shine ? 1 : 0);
-    else
-        Print("[CHAT FORMATTER] THE SHINE IS INVALID PARAMETER IN THE MATERIAL");
-
-
-    return b;
-}
-
-static function Vector2D CalculateButtonUVSize(float x, float y)
-{
-    local float smallest;
-    local Vector2d uv;
-
-    if(x == y) return vect2d(1,1);
-
-    smallest = FMin(x, y);
-    uv.X = smallest/x;
-    uv.Y = smallest/y;
-    
-    return uv;
-}
-
 static function bool GetLocalizationLog(coerce string key, coerce string section, coerce string filename, out coerce string scriptResult)
 {
     scriptResult = Localize(section, key, filename);
     return Class'Engine'.static.IsEditor() || Class'SS_GameMod_PingSystem'.default.ToggleDebugging == 1 || scriptResult != "" && !Class'Hat_Localizer'.static.ContainsErrorString(scriptResult);
-}
-
-static function string GetSettingsLocalization(coerce string key, coerce string section, optional out coerce string result)
-{
-    result =  Localize(section, key, "communication_settings");
-    return result;
 }
 
 static function AddKeywordReplacement(out Array<ConversationReplacement> Keywords, coerce string keyword, coerce string value, optional bool PreTranslation)

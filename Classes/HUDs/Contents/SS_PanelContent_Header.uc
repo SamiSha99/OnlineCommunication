@@ -15,7 +15,7 @@ function string GetLocalization()
 {
     local string l;
 
-    l = Class'SS_ChatFormatter'.static.GetSettingsLocalization(Header, "Header");
+    l = Class'SS_HUDMenu_PingSystemConfig'.static.GetSettingsLocalization(Header, "Header");
     
     return Class'Hat_Localizer'.static.ContainsErrorString(l) ? Header : l;
 }

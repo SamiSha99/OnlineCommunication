@@ -6,7 +6,7 @@ const GAP_CONFIG = 0.25f;
 var Name ContentName;
 var bool ContentEnabled;
 var string EnabledIf; // String of rules
-var Array<ChatButton> buttons;
+var Array<OCButton> buttons;
 var Vector2D ContentSizeClipped;
 
 var Array<String> ToolTips;
@@ -62,7 +62,7 @@ function BuildButtons()
 {
     local int i;
     for(i = 0; i < Buttons.Length; i++) Buttons[i].ButtonID = ContentName;
-    Buttons = Class'SS_ChatFormatter'.static.BuildButtons(Buttons);
+    Buttons = Class'SS_Button'.static.BuildButtons(Buttons);
 }
 
 function OnContentHover()

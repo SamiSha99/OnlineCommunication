@@ -13,7 +13,7 @@ const CHAT_BUTTON_SIZE_SMALL = 48;
 var bool bChatExpanded;
 var bool bCustomConfigMenu;
 
-var Array<ChatButton> buttons;
+var Array<OCButton> buttons;
 var int highlightedButton;
 var bool bDragging;
 
@@ -35,7 +35,7 @@ function OnOpenHUD(HUD H, optional String command)
 
     MouseMatInstance = Class'OnlineCommunication'.static.InitMaterial(MouseMat);
         
-    buttons = Class'SS_ChatFormatter'.static.BuildButtons(buttons);
+    buttons = Class'SS_Button'.static.BuildButtons(buttons);
 
     SetTimer(H, 0.01f, false, NameOf(LoadSettings), self);
 }
@@ -91,7 +91,7 @@ function bool Tick(HUD H, float d)
 
 function DrawChatEditor(HUD H, float scale, ChatSettings settings)
 {
-    local ChatButton cb;
+    local OCButton cb;
     local Vector2d mousePos;
     local int i;
     local float clipX, clipY, buttonYPos, buttonXPos;
@@ -180,7 +180,7 @@ function RenderToolTip(HUD H, float scale, ChatSettings settings)
 
     posY = FMax(tooltipScale, 1.0f) * scale * (down ? -1 : 1) * CHAT_BUTTON_SIZE_SMALL/0.8f + mouseY; 
     
-    Class'SS_ChatFormatter'.static.GetSettingsLocalization(buttons[highlightedButton].buttonID, "chatexpand", tooltip);
+    Class'SS_HUDMenu_PingSystemConfig'.static.GetSettingsLocalization(buttons[highlightedButton].buttonID, "chatexpand", tooltip);
     
     Class'SS_Color'.static.SetDrawColor(H, 255, 255, 255, 255);
     GameMod.StringAugmenter.DoDynamicArguments(tooltip);

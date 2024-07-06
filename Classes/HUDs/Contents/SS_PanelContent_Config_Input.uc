@@ -35,7 +35,7 @@ function RenderConfigButton(HUD H, SS_Panel panel, float x, float y)
     
     if(IsInputtingName && Len(InputText) <= 0)
     {
-        text = Class'SS_ChatFormatter'.static.GetSettingsLocalization(FillerText, "inputs");
+        text = Class'SS_HUDMenu_PingSystemConfig'.static.GetSettingsLocalization(FillerText, "inputs");
         Class'SS_Color'.static.SetDrawColor(H, textColor.R, textColor.G, textColor.B, FillerOpacity);
         H.Canvas.Font = class'Hat_FontInfo'.static.GetDefaultFont(text);
         panel.DrawBorderedText(H.Canvas, text, pos.x * H.Canvas.ClipX - (centerText ? 0.0f : Buttons[0].Size.X/2.2f * scale), pos.y * H.Canvas.ClipY, TextSize * scale, false, centerText ? TextAlign_Center: TextAlign_Left,,0);
@@ -72,9 +72,9 @@ function TickContent(HUD H, float d)
 
     Buttons[0].Size.X = Lerp(default.Buttons[0].Size.X * scale, FocusSize.X * scale, AnimationAmount);
     Buttons[0].Size.Y = Lerp(default.Buttons[0].Size.Y * scale, FocusSize.Y * scale, AnimationAmount);
-    size2D = Class'SS_ChatFormatter'.static.CalculateButtonUVSize(Buttons[0].Size.X, Buttons[0].Size.Y);
+    size2D = Class'SS_Button'.static.CalculateButtonUVSize(Buttons[0].Size.X, Buttons[0].Size.Y);
     lc = MakeLinearColor(size2D.X, size2D.Y, 0, 0);
-    Buttons[0].MatInstance.SetVectorParameterValue(Buttons[0].uvSizeParamName, lc);
+    Buttons[0].MatInstance.SetVectorParameterValue(Buttons[0].uvSizeParameter, lc);
 		
 }
 

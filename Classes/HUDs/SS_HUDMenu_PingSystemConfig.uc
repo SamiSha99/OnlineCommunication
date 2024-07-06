@@ -261,6 +261,12 @@ function bool DisablesCameraMovement(HUD H)
     return true;
 }
 
+static function string GetSettingsLocalization(coerce string key, coerce string section, optional out coerce string result)
+{
+    result =  Localize(section, key, "communication_settings");
+    return result;
+}
+
 defaultproperties
 {
     SharedInCoop = true;
