@@ -43,6 +43,7 @@ AllowHatHelperToAttract = Ping Attracts Helper Hat
 
 ; Chat
 EnableEmotes = Toggle Emotes
+ShowWhoHasMod = Grey-Out Players Without Mod
 
 GlobalScale = Chat Font Size
 ChatClippedXLimit = Chat Width Scale
@@ -249,6 +250,10 @@ StartingLineType_1 = Adds an indicator at the beginning of each chat message.
 
 EnableEmotes_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
 EnableEmotes_1 = Toggles whether to show [color=gold]Emotes of other players[/color] in the chat.
+
+ShowWhoHasMod_0 = @{>communication_settings>tooltip>TOGGLE_ENABLED}
+ShowWhoHasMod_1 = [color=ruby]Please do not harass or encourage players to install the mod![/color]
+ShowWhoHasMod_2 = Mark players who don't have the [color=gold]Online Communication[/color] mod installed with a [color=#A8A8A8]shade of grey[/color]. 
 
 ; ANNOUNCEMENTS
 

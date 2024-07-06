@@ -22,6 +22,7 @@ Hat_TimeObject_Base = [owner] wants to collect the @{~IC|Parade Surprise}![icon=
 Hat_NPC_ExpressBand_0 = [owner] wants the @{~NPC|Express Owls} to @{~IC|play a tune}!
 Hat_Bench_SpaceshipChair_3 = [owner] wants to drive the @{~LC|spaceship} and return @{~LC|home}!
 Hat_ImpactInteract_Spring_0 = [owner] wants to play @{~IC|Vanessa's Curse}!
+StaticMeshActor_901 = [owner] wants to @{~IC|go gambling}!
 
 [default]
 
