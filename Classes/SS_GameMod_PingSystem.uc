@@ -665,12 +665,17 @@ event OnOnlinePartyCommand(string Command, Name CommandChannel, Hat_GhostPartyPl
     if(default.ToggleDebugging != 0)
     {
         Print("Command being received" @ command);
-        Print("Sent by" @ Sender);
+        Print("Sent by" @ Sender.GetDisplayName() @ "(Steam ID:" @ Sender.GetNetworkingIDString() $ ")");
     }
 
     splits = SplitString(Command, FROSTBURN_CLIFFS_2.const.COMMAND_PRIMARY_DELIM);
 
     DoCommand(splits[0], Sender, splits[1]);
+}
+
+function OnRemoteEvent(Name EventName)
+{
+    if(AnnouncerManager != None) AnnouncerManager.OnRemoteEvent(EventName);
 }
 
 function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
