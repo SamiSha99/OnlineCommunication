@@ -52,6 +52,12 @@ function OnPreOpenHUD(HUD H, out class<Object> InHUDElement)
     for(i = 0; i < AnnouncerObjects.Length; i++) AnnouncerObjects[i].OnPreOpenHUD(H, InHUDElement);
 }
 
+function OnRemoteEvent(Name EventName)
+{
+    local int i;
+    for(i = 0; i < AnnouncerObjects.Length; i++) AnnouncerObjects[i].OnRemoteEvent(EventName);
+}
+
 function OnAnnouncementRecieved()
 {
     local int i;
