@@ -58,7 +58,7 @@ function bool Render(HUD H)
     if(bCustomConfigMenu) return false;
    
     scale = FMin(H.Canvas.ClipX, H.Canvas.ClipY) / 1080.0f;
-    scale *= Class'SS_CommunicationSettings'.default.GlobalScale * 0.5f;
+    scale *= Class'SS_CommunicationSettings'.default.GlobalScale * 0.625f;
     
     settings.ChatPosClipped = ChatPosClipped;
     settings.forceVisiblity = bChatExpanded;
@@ -332,10 +332,10 @@ function bool OnClick(HUD H, bool release)
             OriginalChatPos = ChatPosClipped;
             break;
         case 'BUTTON_DOWNSCALE':
-            GameMod.ChatSettings.SetSettingFloat("GlobalScale", FClamp(Class'SS_CommunicationSettings'.default.GlobalScale - 0.05f, 0.75f, 2.0f));
+            GameMod.ChatSettings.SetSettingFloat("GlobalScale", FClamp(Class'SS_CommunicationSettings'.default.GlobalScale - 0.05f, 0.5f, 2.0f));
             break;
         case 'BUTTON_UPSCALE':
-            GameMod.ChatSettings.SetSettingFloat("GlobalScale", FClamp(Class'SS_CommunicationSettings'.default.GlobalScale + 0.05f, 0.75f, 2.0f));
+            GameMod.ChatSettings.SetSettingFloat("GlobalScale", FClamp(Class'SS_CommunicationSettings'.default.GlobalScale + 0.05f, 0.5f, 2.0f));
             break;
         case 'BUTTON_RESET':
             GameMod.ChatSettings.SetSettingFloat("GlobalScale", GameMod.ChatSettings.GetSettingFloat("GlobalScale", true));
