@@ -13,6 +13,7 @@ function Tick(float d);
 function GhostTick(float d);
 function OnCollectibleSpawned(Object InCollectible);
 function OnPreOpenHUD(HUD H, out class<Object> InHUDElement);
+function OnRemoteEvent(Name EventName);
 function OnAnnouncementRecieved();
 function bool OnPing(Hat_PlayerController pc, optional bool released = false){ return true; }
 
