@@ -32,11 +32,24 @@ function Init()
     UpdateScoreList();
 }
 
+function OnRemoteEvent(Name EventName)
+{
+    // Class'SS_GameMod_PingSystem'.static.Print("[REMOTE EVENT]" @ EventName);
+    switch(EventName)
+    {
+        case 'RouletteFlash':
+            // Class'SS_GameMod_PingSystem'.static.Print("Caught Event we need to listen to" @ EventName);        
+            break;
+    }
+}
+
 function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
 {
     local Array<ConversationReplacement> keys;
     local WorldInfo wi;
     
+    Class'SS_GameMod_PingSystem'.static.Print(InHUDElement);
+
     if(!Class'SS_CommunicationSettings'.default.EnableVanessaCurse) return;
     if(TeamWinHUDs.Find(Caps(InHUDElement)) == INDEX_NONE) return;
 
