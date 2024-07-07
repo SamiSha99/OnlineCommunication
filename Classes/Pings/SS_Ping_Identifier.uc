@@ -273,7 +273,7 @@ static function bool ShouldIgnore(Actor a, TraceHitInfo hitinfo)
     return false;
 }
 
-static function bool PingHasOption(string section, string key, out string result)
+static function bool PingHasOption(string section, string key, optional out string result)
 {
     result = Localize(section, key, "pings_options");
     return !Class'Hat_Localizer'.static.ContainsErrorString(result);
