@@ -96,3 +96,14 @@ WonderFlow_Flower_Base = WonderFlow_Flower_Base->TouchCylinderComponent0
 Hat_Platform_Base = Hat_Platform_Base
 Hat_SpringBased = none
 Hat_DiveBoard = none
+
+; Any map name defined underneath will cause any recieved ping to only print if such thing exist on the map.
+[StrictMapContext]
+
+hub_spaceship = hub_spaceship
+; Some Hub Swapper maps
+hubexmap_mcu8_spaceshipex = hubexmap_mcu8_spaceshipex
+hubexmap_SpookySpaceship = hubexmap_SpookySpaceship
+hubexmap_CamSystem = hubexmap_CamSystem
+hubexmap_HolidayHub = hubexmap_HolidayHub
+hubexmap_ballparadise_public = hubexmap_ballparadise_public

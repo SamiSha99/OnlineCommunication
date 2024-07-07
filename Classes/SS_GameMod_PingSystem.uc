@@ -556,7 +556,7 @@ function ListenToEmotes()
             OnlineChatHUD.AddEmoteToChat(keys, flag.EmoteIcon, flag.LocalizedEmoteMessage, GhostReader[i].PlayerState, reply);
         }
 
-        Print("Player: " @ GhostReader[i].SteamName @ "(" $ GhostReader[i].SteamID $ ") | Emote:" @ flag.EmoteIcon @ "| (Localized) Text:" @ flag.LocalizedEmoteMessage);
+        Print("Player: " @ GhostReader[i].SteamName @ "(" $ GhostReader[i].SteamID $ ") | Emote:" @ flag.EmoteIcon @ "| Localized: \"" $ flag.LocalizedEmoteMessage $ "\"");
     }
 
     // Check for locals
@@ -803,6 +803,10 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
                     }
                 }
             }
+
+            // Mainly for spaceship because its the most volatile mod installation discrepancy location.
+            // Unless a ghost player
+            if((!(targetName ~= "Hat_GhostPartyPlayer") || !(targetName ~= "Arg_GhostPartyPlayer")) && targetActor == None && Class'SS_Ping_Identifier'.static.PingHasOption("StrictMapContext", map)) return;
 
             if(targetActor != None)
             {
