@@ -47,12 +47,10 @@ static function Array<OCButton> BuildButtons(Array<OCButton> buttons)
 
 static function OCButton BuildButton(OCButton b)
 {
-    local MaterialInstanceTimeVarying instance; 
     local LinearColor cl;
     local Vector2d uvSize;
-    instance = new Class'MaterialInstanceTimeVarying';
-    instance.SetParent(b.Material);
-    b.MatInstance = instance;
+
+    b.MatInstance = Class'OnlineCommunication'.static.InitMaterial(b.Material);
 
     uvSize = vect2d(1.0f, 1.0f);
     if(b.MatInstance.IsValidParameter(b.uvSizeParameter))
