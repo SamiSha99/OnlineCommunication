@@ -1,6 +1,6 @@
 Class SS_Announcer extends Object;
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 const LOCALIZATION_FILE = "announcements";
 
 function WorldInfo GetWorldInfo()
@@ -33,5 +33,5 @@ function Announce(string localization, string section, Array<ConversationReplace
 
 function Print(coerce string msg)
 {
-    Class'SS_GameMod_PingSystem'.static.Print(msg);
+    Class'SS_GameMod_OC'.static.Print(msg);
 }

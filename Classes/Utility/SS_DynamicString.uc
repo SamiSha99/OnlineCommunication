@@ -6,7 +6,7 @@ enum DynamicResult
     DR_Localize
 };
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 
 function DoDynamicArguments(out string script, optional Array<ConversationReplacement> keys, optional out int nestedLoop)
 {

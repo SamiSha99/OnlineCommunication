@@ -34,7 +34,6 @@ function ValidateContracts()
     local int i;
     local Array<ConversationReplacement> keys;
     local string l;
-    
     if(GetWorldInfo().TimeSeconds <= nextValidationTime) return;
     
     nextValidationTime += UPDATE_TIME_INTERVAL;
@@ -54,7 +53,7 @@ function ValidateContracts()
     {
         foreach contracts(c) 
         {
-            if(c.default.Objectives.Length <= 0) continue;
+            if(c.static.GetObjectives().Length <= 0) continue;
             if(ContractListeners.Find('ActiveContract', c) != INDEX_NONE) continue;
             AddContractListener(c);
         }
@@ -67,7 +66,7 @@ function ValidateContracts()
         {
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "contract_name", GetContractSection(ContractListeners[i]));
             l = ContractListeners[i].ActiveContract.default.IsPassive ? "PassivePerfected" : "ContractPerfected";
-            Announce(l, "contracts", keys, "deathwish");
+            Announce(l, GetAnnouncementSection(ContractListeners[i].ActiveContract), keys, "deathwish");
             ContractListeners.Remove(i, 1);
             i--;
             continue;
@@ -77,7 +76,7 @@ function ValidateContracts()
         {
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "contract_name", GetContractSection(ContractListeners[i]));
             l = ContractListeners[i].ActiveContract.default.IsPassive ? "MainObjectivePassiveComplete" : "MainObjectiveComplete";
-            Announce(l, "contracts", keys, "deathwish");
+            Announce(l, GetAnnouncementSection(ContractListeners[i].ActiveContract), keys, "deathwish");
             ContractListeners.Remove(i, 1);
             i--;
             continue;
@@ -97,15 +96,23 @@ function AnnounceToLobby()
 function AddContractListener(Class<Hat_SnatcherContract_DeathWish> contract)
 {
     local ContractListener cl;
-    local int i;
+    local int i, activeContractObjectivesAmount;
 
     cl.ActiveContract = contract;
-    cl.ObjectiveStatus.Length = cl.ActiveContract.default.Objectives.Length;
-    for(i = 0; i < cl.ActiveContract.default.Objectives.Length; i++)
+    activeContractObjectivesAmount = cl.ActiveContract.static.GetObjectives().Length;
+    cl.ObjectiveStatus.Length = activeContractObjectivesAmount;
+    
+    for(i = 0; i < activeContractObjectivesAmount; i++)
         cl.ObjectiveStatus[i] = cl.ActiveContract.static.IsObjectiveCompleted(i);
     cl.AlreadyPerfect = AllTrue(cl.ObjectiveStatus);
 
     ContractListeners.AddItem(cl);
+}
+
+function string GetAnnouncementSection(Class<Hat_SnatcherContract_DeathWish> contract)
+{
+    if(class'Hat_SeqCond_IsTimedEvent'.static.IsTimedEvent(ETimedEvent_Summer) && ClassIsChildOf(contract, Class'Hat_SnatcherContract_Summer_Procedural')) return "contracts_summer";
+    return "contracts";
 }
 
 function string GetContractSection(ContractListener cl)

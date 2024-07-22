@@ -22,6 +22,14 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ToggleDebugging
         ContentName = "ToggleDebugging"
+        Config = {(
+            ID = "ToggleDebugging",
+            Name = "ToggleDebugging",
+            Description = "ToggleDebugging_Desc",
+            Default = 0,
+            OptionValues = {(0, 1)},
+            OptionLabels = {("Off", "On")}
+        )}
         ToolTips = ("ToggleDebugging_0", "ToggleDebugging_1", "ToggleDebugging_2", "ToggleDebugging_3", "ToggleDebugging_4", "ToggleDebugging_5", "ToggleDebugging_6", "ToggleDebugging_7");
     End Object
     Contents.Add(ToggleDebugging);

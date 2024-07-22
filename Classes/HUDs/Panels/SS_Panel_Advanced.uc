@@ -38,7 +38,6 @@ defaultproperties
             OptionValues = {(0, 1, 2)},
             OptionLabels = {("All", "Steam Friends", "Private")}
         )}
-        IsModConfig = false
         Tooltips = ("ChannelType_0", "ChannelType_1", "ChannelType_2", "ChannelType_3", "ChannelType_4")
     End Object
     Contents.Add(ChannelType);

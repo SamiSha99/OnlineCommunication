@@ -42,3 +42,11 @@ MainObjectivePassiveComplete = [color=gold][owner] has completed the main object
 
 ContractPerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a contract}![icon=dw_gold] Congratulations![/color]
 PassivePerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a candle}![icon=dw_passive_gold] Congratulations![/color]
+
+[contracts_summer]
+
+MainObjectiveComplete = [color=gold][owner] has completed the main objective of @{~IC|>[contract_name]|a summer contract}![icon=dw] Congratulations![/color]
+MainObjectivePassiveComplete = [color=gold][owner] has completed the main objective of @{~IC|>[contract_name]|a summer candle}![icon=dw_passive] Congratulations![/color]
+
+ContractPerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a summer contract}![icon=dw_gold] Congratulations![/color]
+PassivePerfected = [color=gold][owner] has fully cleared @{~IC|>[contract_name]|a summer candle}![icon=dw_passive_gold] Congratulations![/color]

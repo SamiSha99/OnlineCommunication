@@ -1,9 +1,9 @@
 Class SS_PanelContent_ChatBox extends SS_PanelContent;
 
 var string Localization;
-var ChatSettings settings;
+var OCSettings settings;
 
-var Array<OnlineChatLogInfo> Log;
+var Array<OCLogInfo> Log;
 
 function Init()
 {
@@ -35,7 +35,7 @@ function UpdateLog()
     Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", Class'OnlineCommunication'.static.GetLocalSteamID() $ "_0");
     GetGameMod().StringAugmenter.DoDynamicArguments(text, keys);
     log.Length = 0;
-    log.AddItem(Class'SS_ChatFormatter'.static.BuildChatLog(text));
+    log.AddItem(Class'SS_ChatFormatter'.static.Build(text));
 }
 
 function string GetLocalization()

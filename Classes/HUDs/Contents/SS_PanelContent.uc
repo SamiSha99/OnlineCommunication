@@ -24,9 +24,9 @@ function OnUpdateContent()
         Tooltip.OnUpdateRequest();
 }
 
-function SS_GameMod_PingSystem GetGameMod()
+function SS_GameMod_OC GetGameMod()
 {
-    return SS_GameMod_PingSystem(class'OnlineCommunication'.static.GetGameMod('SS_GameMod_PingSystem'));
+    return SS_GameMod_OC(class'OnlineCommunication'.static.GetGameMod('SS_GameMod_OC'));
 }
 
 // The Content Renderer

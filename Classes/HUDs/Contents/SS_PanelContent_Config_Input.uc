@@ -112,7 +112,7 @@ function OnClickContent(HUD H, SS_Panel panel, string arg)
 
 function EnableInputting(HUD H)
 {
-    local SS_GameMod_PingSystem gm;
+    local SS_GameMod_OC gm;
 
     gm = GetGameMod();
     if(gm == None || gm.ActiveInputContentPanel != None) return;
@@ -130,7 +130,7 @@ function EnableInputting(HUD H)
 
 function DisableInputting(HUD H)
 {
-    local SS_GameMod_PingSystem gm;
+    local SS_GameMod_OC gm;
 
     gm = GetGameMod();
     if(InputInstance == None) return;

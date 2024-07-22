@@ -36,7 +36,7 @@ static function string Literally1984(string s)
 
 static function bool HasTextFilter()
 {
-    return Class'SS_GameMod_PingSystem'.default.FilterType != 0;
+    return Class'SS_CommunicationSettings'.default.FilterType != 0;
 }
 
 static function string DoThe1984(string word, string stinkyWord)
@@ -49,7 +49,7 @@ static function string DoThe1984(string word, string stinkyWord)
     
     wordLength = Len(stinkyWord);
 
-    switch(class'SS_GameMod_PingSystem'.default.FilterType)
+    switch(class'SS_CommunicationSettings'.default.FilterType)
     {
         case 1:
             s = "PECK";

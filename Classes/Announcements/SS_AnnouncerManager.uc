@@ -1,7 +1,7 @@
 // For any random announcement checks, most functions here handled in the GameMod
 Class SS_AnnouncerManager extends Object;
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 
 var Array < Class < SS_Announcer > > AnnouncerClasses;
 var Array < SS_Announcer > AnnouncerObjects;

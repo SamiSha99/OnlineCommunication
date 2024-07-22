@@ -22,7 +22,16 @@ Hat_TimeObject_Base = [owner] wants to collect the @{~IC|Parade Surprise}![icon=
 Hat_NPC_ExpressBand_0 = [owner] wants the @{~NPC|Express Owls} to @{~IC|play a tune}!
 Hat_Bench_SpaceshipChair_3 = [owner] wants to drive the @{~LC|spaceship} and return @{~LC|home}!
 Hat_ImpactInteract_Spring_0 = [owner] wants to play @{~IC|Vanessa's Curse}!
+; Slot Machine
 StaticMeshActor_901 = [owner] wants to @{~IC|go gambling}!
+StaticMeshActor_1495 = @{>pings>hub_spaceship>StaticMeshActor_901}
+; "Supercomputer"
+StaticMeshActor_176 = [owner] wants to use the @{~OC|VGS 1 Supercomputer}!
+; The useless lever that does absolutely nothing
+StaticMeshActor_151 = [owner] wants to pull the @{~OC|lever}!
+; Microwave
+StaticMeshActor_763 = [owner] wants to punish @{~OC|bad food}!
+
 
 [default]
 

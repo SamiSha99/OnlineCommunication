@@ -3,13 +3,13 @@ CLass SS_Ping_Helpers extends Object;
 const DEFAULT_PING_LIFETIME = 10;
 const CONNECTION_SUCCEED_DURATION = 15;
 
-static function TriggerPingSound(Vector pingLocation, Actor source, optional int desperationLevel = 1)
+static function TriggerPingSound(Vector pingLocation, Actor source, optional int desperationLevel = 1, optional SoundCue pingSound = None)
 {
-    local SoundCue pingSound;
     local float volume, range;
     
     if(Class'OnlineCommunication'.static.IsGamePaused()) return;
-    pingSound = GetPingSound(desperationLevel);
+    if(pingSound == None)
+        pingSound = GetPingSound(desperationLevel);
 
     volume = Class'SS_CommunicationSettings'.default.PingNotificationMasterVolume;
     Class'OnlineCommunication'.static.GetPlayerNearest(pingLocation, range);
@@ -56,7 +56,7 @@ static function string GetPotentialPingSections()
 
 static function SoundCue GetPingSound(optional int desperationLevel = 1)
 {
-    switch(Class'SS_GameMod_PingSystem'.default.PingSoundType)
+    switch(Class'SS_CommunicationSettings'.default.PingSoundType)
     {
         case 0: return FRand() <= 0.04f ? SoundCue'HatinTime_SFX_Cruise.SoundCues.Cruise_Task_Fail' : SoundCue'HatinTime_SFX_Cruise.SoundCues.Cruise_Task_Appear';
         case 1: return FRand() <= 0.04f ? SoundCue'SS_PingSystem_Content.punchhit_crit' : SoundCue'HatInTime_Weapons.SoundCues.PunchHit';
@@ -96,9 +96,9 @@ static function SoundCue GetPingSound(optional int desperationLevel = 1)
 /* How long the ping will persist, this is a local adjustment and is irrelevant to the ghost recievers */
 static function float GetLifeTime()
 {
-    if(Class'SS_GameMod_PingSystem'.default.PingLifeTime == 0) return DEFAULT_PING_LIFETIME;
-    if(Class'SS_GameMod_PingSystem'.default.PingLifeTime == 99) return 0; // lifespan set to 0 = forever
-    return Class'SS_GameMod_PingSystem'.default.PingLifeTime;
+    if(Class'SS_CommunicationSettings'.default.PingLifeTime == 0) return DEFAULT_PING_LIFETIME;
+    if(Class'SS_CommunicationSettings'.default.PingLifeTime == 99) return 0; // lifespan set to 0 = forever
+    return Class'SS_CommunicationSettings'.default.PingLifeTime;
 }
 
 static function string GetGhostName(EmoteChatInfo eci, optional int index = INDEX_NONE, optional bool StreamerMode = false)
@@ -160,7 +160,7 @@ static function bool IsConnectionFailed(EmoteChatInfo ghost)
 // 2 - Quick Cast
 static function int GetPingCastingType()
 {
-    return Class'SS_GameMod_PingSystem'.default.PingCastType;
+    return Class'SS_CommunicationSettings'.default.PingCastType;
 }
 
 static function bool PingingForbidden(Hat_Player plyr)

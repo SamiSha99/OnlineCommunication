@@ -252,7 +252,7 @@ function bool OnClick(HUD H, bool release)
     local string ButtonID, Argument;
     local Array<string> Splits;
     local OCButton b;
-    local SS_GameMod_PingSystem GM;
+    local SS_GameMod_OC GM;
 
     if(release)
     {
@@ -429,21 +429,23 @@ function bool EnableIf(string argument)
 {
     local Array<string> splits;
     local string a, b, datatype, rule;
+    local name settingName;
     local SS_CommunicationSettings cs;
     if(argument ~= "") return true;
     
     splits = SplitString(argument, " ");
+    settingName = Name(splits[1]);
     cs = ConfigMenu.GameMod.ChatSettings;
     switch(locs(splits[0]))
     {
         // Config check
         case "config":
-            a $= Class'SS_GameMod_PingSystem'.static.GetConfigValue(Class'SS_GameMod_PingSystem', Name(splits[1]));
+            a $= Class'SS_GameMod_OC'.static.GetConfigValue(Class'SS_GameMod_OC', settingName);
             splits[0] = "int";
             break;
-        case "string":  a $= cs.GetSettingString(splits[1]);    break;
-        case "float":   a $= cs.GetSettingFloat(splits[1]);     break;
-        case "int":     a $= cs.GetSettingInt(splits[1]);       break;
+        case "string":  a $= cs.GetSettingString(settingName);    break;
+        case "float":   a $= cs.GetSettingFloat(settingName);     break;
+        case "int":     a $= cs.GetSettingInt(settingName);       break;
     }
     datatype = splits[0];
     rule = splits[2];

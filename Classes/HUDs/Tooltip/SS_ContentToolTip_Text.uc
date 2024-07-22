@@ -1,8 +1,8 @@
 Class SS_ContentToolTip_Text extends SS_ContentToolTip;
 
 var Array<string> Localizations;
-var Array<OnlineChatLogInfo> Log;
-var ChatSettings settings;
+var Array<OCLogInfo> Log;
+var OCSettings settings;
 var bool inited;
 
 function InitToolTip(optional Array<string> locs)
@@ -11,7 +11,7 @@ function InitToolTip(optional Array<string> locs)
     inited = true;
     Localizations = locs;
     GameMod = GetGameMod();
-    BuildLog();
+    Build();
 }
 
 function Render(HUD H, SS_Panel panel, float x, float y)
@@ -26,10 +26,10 @@ function Render(HUD H, SS_Panel panel, float x, float y)
 
 function OnUpdateRequest()
 {
-    BuildLog();
+    Build();
 }
 
-function BuildLog()
+function Build()
 {
     local Array<ConversationReplacement> keys;
     local string text, l;
@@ -41,13 +41,13 @@ function BuildLog()
         text = GetLocalization(l);
         if(GameMod != None)
             GameMod.StringAugmenter.DoDynamicArguments(text, keys);
-        Log.AddItem(Class'SS_ChatFormatter'.static.BuildChatLog(text)); 
+        Log.AddItem(Class'SS_ChatFormatter'.static.Build(text)); 
     }
 }
 
-function SS_GameMod_PingSystem GetGameMod()
+function SS_GameMod_OC GetGameMod()
 {
-    return SS_GameMod_PingSystem(class'OnlineCommunication'.static.GetGameMod('SS_GameMod_PingSystem'));
+    return SS_GameMod_OC(class'OnlineCommunication'.static.GetGameMod('SS_GameMod_OC'));
 }
 
 function string GetLocalization(string loc)

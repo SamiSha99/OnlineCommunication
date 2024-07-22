@@ -1,8 +1,20 @@
 // Also includes selection values for custom ones, assuming this will ever happen
 Class SS_PanelContent_ConfigGM extends SS_PanelContent_Config_Base;
 
+// to-do: scrap this?
 var bool IsModConfig;
 var GameModInfoConfig Config;
+
+// to-do this as the new config format! instead of the GameModInfoConfig!
+struct ConfigOption
+{
+    var string Label;
+    var string Value;
+};
+
+var Array<ConfigOption> Options;
+var int DefaultValue;
+
 var int SelectedOptionIndex;
 
 function RenderContent(HUD H, SS_Panel panel, float x, float y)
@@ -46,7 +58,7 @@ function bool FindGameModInfoConfig(out Array<GameModInfoConfig> gmics, out Game
     
     if(gmics.Length == 0)
     {
-        Class'GameMod'.static.GetClassMod(Class'SS_GameMod_PingSystem', gmi);
+        Class'GameMod'.static.GetClassMod(Class'SS_GameMod_OC', gmi);
         gmics = gmi.configs;
     }
 
@@ -78,7 +90,7 @@ function OnClickContent(HUD H, SS_Panel panel, string arg)
 function SaveGMConfig()
 {
     if(IsModConfig)
-        Class'GameMod'.static.SaveConfigValue(Class'SS_GameMod_PingSystem', ContentName, Config.OptionValues[SelectedOptionIndex]);
+        Class'GameMod'.static.SaveConfigValue(Class'SS_GameMod_OC', ContentName, Config.OptionValues[SelectedOptionIndex]);
     else
         GetGameMod().ChatSettings.SetSettingInt(ContentName, Config.OptionValues[SelectedOptionIndex]);
 }
@@ -96,7 +108,7 @@ function SetSettingValue()
     if(IsModConfig)
     {
         FindGameModInfoConfig(gmics, Config, ContentName);
-        SelectedOptionValuesRaw = class'GameMod'.static.GetConfigValue(class'SS_GameMod_PingSystem', ContentName);    
+        SelectedOptionValuesRaw = class'GameMod'.static.GetConfigValue(class'SS_GameMod_OC', ContentName);    
     }
     else
     {
@@ -112,7 +124,6 @@ function OnKeyPress(HUD H, SS_Panel panel, bool right, bool release)
 
 defaultproperties
 {
-    IsModConfig = true;
     Buttons(0) = {(
         Argument = "down",
         Material = MaterialInstanceConstant'SS_PingSystem_Content.UIButton_Left'

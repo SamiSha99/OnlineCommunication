@@ -1,0 +1,11 @@
+[hub_spaceship]
+
+; Let's go gambling!
+StaticMeshActor_901_l1 = SoundCue'SS_PingSystem_Content.gambling_cue'
+StaticMeshActor_1495_l1 = SoundCue'SS_PingSystem_Content.gambling_cue'
+
+; Ah dang it!
+StaticMeshActor_901_l2 = SoundCue'SS_PingSystem_Content.ah_dang_it_cue'
+StaticMeshActor_1495_l2 = SoundCue'SS_PingSystem_Content.ah_dang_it_cue'
+StaticMeshActor_901_l3 = SoundCue'SS_PingSystem_Content.ah_dang_it_cue'
+StaticMeshActor_1495_l3 = SoundCue'SS_PingSystem_Content.ah_dang_it_cue'

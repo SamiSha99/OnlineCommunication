@@ -1,18 +1,37 @@
-// Holds all None-ModInfo Config Settings
+// Holds all ~None-ModInfo~ ALL Config Settings
 // Heavy Version Control Stuff and also fixes ModInfo not setting correct defaults
 Class SS_CommunicationSettings extends Object
-    dependsOn(SS_GameMod_PingSystem)
+    dependsOn(SS_GameMod_OC, SS_CommunicationSettings_Types)
     Config(SSPing);
 
-const SETTINGS_VERSION = 1;
-const SETTINGS_VERSION_SOFT = 3; // Soft change for some configs into their original defaults.
+const SETTINGS_VERSION = 2;
+const SETTINGS_VERSION_SOFT = 0; // Soft change for some configs into their original defaults.
 const CHAT_SETTINGS_SAVE_PATH_NAME = "OnlineCommunication/settings_v$.hat";
 const ERROR_COLOR = "#ED2939";
 
 var config int FileVersion;
 var config int FileSoftVersion;
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
+
+// Ping
+var config int PingLifeTime;
+var config int PingSoundType;
+var config int PingCastType;
+var config int PingSpotFeature;
+
+// Safety
+var config int FilterType;
+var config int AntiSpam;
+var config int ChannelType; // 0 = All Chat | 1 = Friends Only | 2 = Custom Channel
+var config string PrivateChannelName; // Only valid when channel set to private.
+
+// Toggles
+var config bool TogglePingSystem;
+var config bool TogglePingButton;
+var config bool ToggleOnlineChat;
+var config bool ToggleAdditionalEmotes;
+var config bool ToggleDebugging;
 
 // Chat
 var float ChatLifeTime;
@@ -64,15 +83,37 @@ var config bool EnableLeave; // Show players who recently failed.
 var config name PingHotKey;
 var config name ExpandChatHotkey;
 
-// 0 = All Chat | 1 = Friends Only | 2 = Custom Channel
-var config int ChannelType;
-var config string PrivateChannelName; // Only valid when channel set to private.
-
 var config int StartingLineType;
 
 function Init()
 {
     UpdateMetaStates();
+}
+
+// When settings are set, this handles post change and saving this config.
+function OnConfigChanged(coerce string ConfigName) 
+{
+    Class'SS_GameMod_OC'.static.Print("ConfigName changed:" @ ConfigName);
+    SaveConfig();
+    switch(ConfigName)
+    {
+        case "PlayerColor":
+            UpdateMetaStates();
+            break;
+        case "ChatClippedXLimit":
+            if(GameMod.OnlineChatHUD != None) 
+                GameMod.OnlineChatHUD.ChatClippedXLimit = default.ChatClippedXLimit; 
+            break;
+        case "ToggleOnlineChat":
+            if(Class'SS_CommunicationSettings'.default.ToggleOnlineChat)
+                GameMod.OpenOnlineChat();
+            else
+                Hat_HUD(GameMod.GetALocalPlayerController().myHUD).CloseHUD(Class'SS_HUDElement_OnlinePartyChat');
+            break;
+        case "OpenExpandedConfigMenu":
+            GameMod.OpenConfigMenuViaLoadout(GameMod.GetALocalPlayerController().myHUD);
+            break;
+    }
 }
 
 function UpdateMetaStates()
@@ -117,6 +158,10 @@ function bool GetColorBySteamID(string SteamID_Index, out string HexColor, out s
     return false;
 }
 
+//#########//
+// Getters //
+//#########//
+
 // Getter for all settings should be in String until a better solution?
 function string GetSettingString(coerce string SettingName, optional bool GetDefault = false)
 {
@@ -143,8 +188,8 @@ function name GetSettingName(coerce string SettingName, optional bool GetDefault
 {
     switch(SettingName)
     {
-        case "PingHotKey":                          return GetDefault ? 'R'       : PingHotKey;
-        case "ExpandChatHotkey":                    return GetDefault ? 'T'       : ExpandChatHotkey;
+        case "PingHotKey":              return GetDefault ? 'R'       : PingHotKey;
+        case "ExpandChatHotkey":        return GetDefault ? 'T'       : ExpandChatHotkey;
     }
     return '';
 }
@@ -164,9 +209,24 @@ function int GetSettingInt(coerce string SettingName, optional bool GetDefault =
         case "AllowHatHelperToAttract": return (GetDefault ? 0 : (AllowHatHelperToAttract ? 1 : 0));
         case "EnableEmotes":            return (GetDefault ? 1 : (EnableEmotes ? 1 : 0));
         case "ShowWhoHasMod":           return (GetDefault ? 1 : (ShowWhoHasMod ? 1 : 0));
+        
+        case "TogglePingSystem":        return (GetDefault ? 1 : (TogglePingSystem ? 1 : 0));
+        case "TogglePingButton":        return (GetDefault ? 1 : (TogglePingButton ? 1 : 0));
+        case "ToggleOnlineChat":        return (GetDefault ? 1 : (ToggleOnlineChat ? 1 : 0));
+        case "ToggleAdditionalEmotes":  return (GetDefault ? 1 : (ToggleAdditionalEmotes ? 1 : 0));
+        case "ToggleDebugging":         return (GetDefault ? 0 : (ToggleDebugging ? 1 : 0));
+
+
         // Ints
-        case "ChannelType":             return (GetDefault ? 0 : (ChannelType));
-        case "StartingLineType":        return (GetDefault ? 0 : (StartingLineType));
+        case "ChannelType":             return (GetDefault ? 0 :                    ChannelType);
+        case "StartingLineType":        return (GetDefault ? 0 :                    StartingLineType);
+        case "FilterType":              return (GetDefault ? FT_Peck :              FilterType);
+        case "AntiSpam":                return (GetDefault ? AST_LastMessage :      AntiSpam);
+
+        case "PingLifeTime":            return (GetDefault ? 10 :                   PingLifeTime);
+        case "PingSoundType":           return (GetDefault ? 0 :                    PingSoundType);
+        case "PingCastType":            return (GetDefault ? PCT_Confirm :          PingCastType);
+        case "PingSpotFeature":         return (GetDefault ? PSF_All :              PingSpotFeature);
     }
     return -1;
 }
@@ -188,76 +248,105 @@ function float GetSettingFloat(coerce string SettingName, optional bool GetDefau
     return 0;
 }
 
+//#########//
+// Setters //
+//#########//
 
 function bool SetSettingString(coerce string SettingName, string Value)
 {
     switch(SettingName)
     {
-        case "PlayerColor":         PlayerColor = Value;                         SaveConfig(); UpdateMetaStates(); return true;
-        case "EnemyColor":          EnemyColor = Value;                          SaveConfig(); return true;
-        case "NonePlayableColor":   NonePlayableColor = Value;                   SaveConfig(); return true;
-        case "ObjectColor":         ObjectColor = Value;                         SaveConfig(); return true;
-        case "ImportantColor":      ImportantColor = Value;                      SaveConfig(); return true;
-        case "LocationColor":       LocationColor = Value;                       SaveConfig(); return true;
-        case "CustomSoundPackage":  CustomSoundPackage = Value;                  SaveConfig(); return true;
-        case "PingCrossHairColor":  PingCrossHairColor = Value;                  SaveConfig(); return true;
-        case "ChatEmoteTextColor":  ChatEmoteTextColor = Value;                  SaveConfig(); return true;
-        case "PrivateChannelName":  PrivateChannelName = Value;                  SaveConfig(); return true;
+        case "PlayerColor":         PlayerColor = Value;                         break;
+        case "EnemyColor":          EnemyColor = Value;                          break;
+        case "NonePlayableColor":   NonePlayableColor = Value;                   break;
+        case "ObjectColor":         ObjectColor = Value;                         break;
+        case "ImportantColor":      ImportantColor = Value;                      break;
+        case "LocationColor":       LocationColor = Value;                       break;
+        case "CustomSoundPackage":  CustomSoundPackage = Value;                  break;
+        case "PingCrossHairColor":  PingCrossHairColor = Value;                  break;
+        case "ChatEmoteTextColor":  ChatEmoteTextColor = Value;                  break;
+        case "PrivateChannelName":  PrivateChannelName = Value;                  break;
+        default: return false;
     }
-    return false;
+    OnConfigChanged(SettingName);
+    return true;
 }
 
 function bool SetSettingName(coerce string SettingName, name Value)
 {
     switch(SettingName)
     {
-        case "PingHotKey":          PingHotKey = Value;                          SaveConfig(); return true;
-        case "ExpandChatHotkey":    ExpandChatHotkey = Value;                    SaveConfig(); return true;
+        case "PingHotKey":          PingHotKey = Value;                          break;
+        case "ExpandChatHotkey":    ExpandChatHotkey = Value;                    break;
+        default: return false;
     }
+    OnConfigChanged(SettingName);
+    return true;
 }
 
 function bool SetSettingInt(coerce string SettingName, int value)
 {
+    local bool b;
+    b = value >= 1;
+
     switch(SettingName)
     {
         // Bools
-        case "EnableVanessaCurse":          EnableVanessaCurse = value >= 1;        SaveConfig(); return true;
-        case "EnableDeathWish":             EnableDeathWish = value >= 1;           SaveConfig(); return true;
-        case "EnableTimePiece":             EnableTimePiece = value >= 1;           SaveConfig(); return true;
-        case "EnableJoin":                  EnableJoin = value >= 1;                SaveConfig(); return true;
-        case "EnableConnectionFailed":      EnableConnectionFailed = value >= 1;    SaveConfig(); return true;
-        case "EnableLeave":                 EnableLeave = value >= 1;               SaveConfig(); return true;
-        case "DontSendIfOutOfRange":        DontSendIfOutOfRange = value >= 1;      SaveConfig(); return true;
-        case "AllowHatHelperToAttract":     AllowHatHelperToAttract = value >= 1;   SaveConfig(); return true;
-        case "EnableEmotes":                EnableEmotes = value >= 1;              SaveConfig(); return true;
-        case "ShowWhoHasMod":               ShowWhoHasMod = value >= 1;             SaveConfig(); return true;
+        case "EnableVanessaCurse":          EnableVanessaCurse = b;             break;
+        case "EnableDeathWish":             EnableDeathWish = b;                break;
+        case "EnableTimePiece":             EnableTimePiece = b;                break;
+        case "EnableJoin":                  EnableJoin = b;                     break;
+        case "EnableConnectionFailed":      EnableConnectionFailed = b;         break;
+        case "EnableLeave":                 EnableLeave = b;                    break;
+        case "DontSendIfOutOfRange":        DontSendIfOutOfRange = b;           break;
+        case "AllowHatHelperToAttract":     AllowHatHelperToAttract = b;        break;
+        case "EnableEmotes":                EnableEmotes = b;                   break;
+        case "ShowWhoHasMod":               ShowWhoHasMod = b;                  break;
+
+        case "TogglePingSystem":            TogglePingSystem = b;               break;
+        case "TogglePingButton":            TogglePingButton = b;               break;
+        case "ToggleOnlineChat":            ToggleOnlineChat = b;               break;
+        case "ToggleAdditionalEmotes":      ToggleAdditionalEmotes = b;         break;
+        case "ToggleDebugging":             ToggleDebugging = b;                break;
+
         // Ints 
-        case "ChannelType":                 ChannelType = value;                    SaveConfig(); return true;
-        case "StartingLineType":            StartingLineType = value;               SaveConfig(); return true;
+        case "ChannelType":                 ChannelType = value;                break;
+        case "StartingLineType":            StartingLineType = value;           break;
+        case "FilterType":                  FilterType = value;                 break;
+        case "AntiSpam":                    AntiSpam = value;                   break;
+
+        case "PingLifeTime":                PingLifeTime = value;               break;
+        case "PingSoundType":               PingSoundType = value;              break;
+        case "PingCastType":                PingCastType = value;               break;
+        case "PingSpotFeature":             PingSpotFeature = value;            break;
+        default: return false;
     }
-    return false;
+    OnConfigChanged(SettingName);
+    return true;
 }
 
 function bool SetSettingFloat(coerce string SettingName, float value)
 {
     switch(SettingName)
     {
-        case "GlobalScale":         GlobalScale = value;            SaveConfig(); return true;
-        case "ChatClippedXLimit":   ChatClippedXLimit = value;      if(GameMod.OnlineChatHUD != None) GameMod.OnlineChatHUD.ChatClippedXLimit = value; return true;
-        case "PingCrossHairAlpha":  PingCrossHairAlpha = value;     SaveConfig(); return true;
-        case "PingCrossHairSize":   PingCrossHairSize = value;      SaveConfig(); return true;
-        case "ChatLifeTime":        ChatLifeTime = value;           SaveConfig(); return true;
-        case "PingNotificationMasterVolume":    PingNotificationMasterVolume = value; SaveConfig(); return true;
-        case "PingNotificationRange":           PingNotificationRange = value; SaveConfig(); return true;
-        case "PingNotificationDecayingRange":   PingNotificationDecayingRange = value; SaveConfig(); return true;
+        case "GlobalScale":         GlobalScale = value;            break;
+        case "ChatClippedXLimit":   ChatClippedXLimit = value;      break;
+        case "PingCrossHairAlpha":  PingCrossHairAlpha = value;     break;
+        case "PingCrossHairSize":   PingCrossHairSize = value;      break;
+        case "ChatLifeTime":        ChatLifeTime = value;           break;
+        case "PingNotificationMasterVolume":    PingNotificationMasterVolume = value; break;
+        case "PingNotificationRange":           PingNotificationRange = value; break;
+        case "PingNotificationDecayingRange":   PingNotificationDecayingRange = value; break;
+        default: return false;
     }
-    return false;
+    OnConfigChanged(SettingName);
+    return true;
 }
 
 function ResetToDefault()
 {
-    local GameModInfo gmi;
-    local int i;
+    // local GameModInfo gmi;
+    // local int i;
 
     // This should be incremented
     FileVersion = SETTINGS_VERSION;
@@ -269,6 +358,20 @@ function ResetToDefault()
     ObjectColor = DEFAULT_OBJECT_COLOR;
     ImportantColor = DEFAULT_IMPORTANT_COLOR;
     LocationColor = DEFAULT_LOCATION_COLOR;
+
+    PingLifeTime = 10;
+    PingSoundType = 0;
+    PingCastType = PCT_Confirm;
+    PingSpotFeature = PSF_All;
+
+    FilterType = FT_Peck;
+    AntiSpam = AST_LastMessage;
+
+    TogglePingSystem = true;
+    TogglePingButton = true;
+    ToggleOnlineChat = true;
+    ToggleAdditionalEmotes = true;
+    ToggleDebugging = false;
 
     EnableVanessaCurse = true;
     EnableDeathWish = true;
@@ -284,7 +387,6 @@ function ResetToDefault()
     ChatLifeTime = 10.0f;
     ChatClippedXLimit = default.ChatClippedXLimit;
     ChatEmoteTextColor = "#FFFFFF"; // #BFFF00
-
 
     PingCrossHairAlpha = 0.7f;
     PingCrossHairSize = 1.0f;
@@ -306,20 +408,20 @@ function ResetToDefault()
 
     StartingLineType = 0;
 
-    Class'GameMod'.static.GetClassMod(Class'SS_GameMod_PingSystem', gmi);
-    for(i = 0; i < gmi.configs.Length; i++) Class'GameMod'.static.SaveConfigValue(Class'SS_GameMod_PingSystem', Name(gmi.configs[i].ID), gmi.configs[i].Default);
-
+    // Class'GameMod'.static.GetClassMod(Class'SS_GameMod_OC', gmi);
+    // for(i = 0; i < gmi.configs.Length; i++)
+        // Class'GameMod'.static.SaveConfigValue(Class'SS_GameMod_OC', Name(gmi.configs[i].ID), gmi.configs[i].Default);
+    
     SaveConfig();
 }
 
 function SoftVersionApply()
 {
-    Class'SS_GameMod_PingSystem'.static.Print("Soft Version Mismatch, updating some settings to their new/current defaults.");
     FileSoftVersion = SETTINGS_VERSION_SOFT;
-    EnableEmotes = true;
-    ShowWhoHasMod = true;
-    Class'SS_GameMod_PingSystem'.static.Print("EnableEmotes =" @ EnableEmotes);
-    Class'SS_GameMod_PingSystem'.static.Print("ShowWhoHasMod =" @ ShowWhoHasMod);
+    Class'SS_GameMod_OC'.static.Print("Soft Version Mismatch, updating some settings to their new/current defaults.");
+    /*
+      ~But nobody came... yet~ 
+    */
     SaveConfig();
 }
 
@@ -333,14 +435,14 @@ static function bool LoadChatSettings(out SS_CommunicationSettings ChatSettings)
 
     if(!class'Engine'.static.BasicLoadObject(ChatSettings, GetSettingsPath(), false, class'SS_CommunicationSettings'.const.SETTINGS_VERSION))
     {
-        Class'SS_GameMod_PingSystem'.static.Print("Reseting everything to defaults due first time initializatio OR older version OR couldn't be found.");
+        Class'SS_GameMod_OC'.static.Print("Reseting everything to defaults due first time initialization OR older version OR couldn't be found.");
         ChatSettings.ResetToDefault();
         return false;
     }
 
     if(ChatSettings.FileSoftVersion != SETTINGS_VERSION_SOFT) ChatSettings.SoftVersionApply();
 
-    Class'SS_GameMod_PingSystem'.static.Print("Settings loaded successfully!");
+    Class'SS_GameMod_OC'.static.Print("Settings loaded successfully!");
     return true;
 }
 

@@ -1,9 +1,9 @@
 Class SS_HUDElement_OnlinePartyChat extends Hat_HUDMenu
-    dependsOn(SS_ChatFormatter, SS_GameMod_PingSystem, SS_Color);
+    dependsOn(SS_ChatFormatter, SS_GameMod_OC, SS_Color);
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 
-var Array<OnlineChatLogInfo> chat;
+var Array<OCLogInfo> chat;
 
 const CHAT_RENDER_AMOUNT_LIMIT = 12;
 const CHAT_ARRAY_LIMIT = 25;
@@ -52,7 +52,7 @@ function LoadSettings()
 function bool Render(HUD H)
 {
     local float scale;
-    local ChatSettings settings;
+    local OCSettings settings;
 
     if(!Super.Render(H)) return false;
     if(bCustomConfigMenu) return false;
@@ -89,7 +89,7 @@ function bool Tick(HUD H, float d)
     return true;
 }
 
-function DrawChatEditor(HUD H, float scale, ChatSettings settings)
+function DrawChatEditor(HUD H, float scale, OCSettings settings)
 {
     local OCButton cb;
     local Vector2d mousePos;
@@ -157,7 +157,7 @@ function DrawChatEditor(HUD H, float scale, ChatSettings settings)
     }
 }
 
-function RenderToolTip(HUD H, float scale, ChatSettings settings)
+function RenderToolTip(HUD H, float scale, OCSettings settings)
 {
     local float posX, posY, mouseX, mouseY, clipX, clipY, tooltipScale;
     local TextAlign alignment;
@@ -215,7 +215,7 @@ function UpdateSettings()
 function bool OnRecievedChatLogCommand(string _id, optional string section = "templates", optional Array<ConversationReplacement> keys, optional string fileName = "onlinechat")
 {
     local string script;
-    local OnlineChatLogInfo log;
+    local OCLogInfo log;
 
     if(_id == "") return false;
     if(!Class'SS_ChatFormatter'.static.GetLocalizationLog(_id, section, filename, script)) return false;
@@ -223,7 +223,7 @@ function bool OnRecievedChatLogCommand(string _id, optional string section = "te
     
     script = Class'SS_1984'.static.Literally1984(script);
 
-    log = Class'SS_ChatFormatter'.static.BuildChatLog(script);
+    log = Class'SS_ChatFormatter'.static.Build(script);
     InsertLogIntoChat(log);
     return true;
 }
@@ -231,21 +231,21 @@ function bool OnRecievedChatLogCommand(string _id, optional string section = "te
 function AddEmoteToChat(Array<ConversationReplacement> keys, optional Surface EmoteIcon = None, optional String EmoteText = "", optional Hat_GhostPartyPlayerStateBase Sender = None, optional bool emotingToOther)
 {
     local string script;
-    local OnlineChatLogInfo log;
-    local ChatLogSegment EmoteSegment;
+    local OCLogInfo log;
+    local OCSegment EmoteSegment;
 
     if(!Class'SS_ChatFormatter'.static.GetLocalizationLog(emotingToOther ? "EMOTE_REPLY_TO_OTHER" : "EMOTE_REPLY", "templates", "onlinechat", script)) return;
 
     if(keys.Length < 0 || EmoteIcon == None && EmoteText ~= "")
     {
-        Class'SS_GameMod_PingSystem'.static.Print("BAD EMOTE RECIEVED, IGNORING!!!");
+        Class'SS_GameMod_OC'.static.Print("BAD EMOTE RECIEVED, IGNORING!!!");
         return;
     }
 
     if(GameMod.StringAugmenter != None) GameMod.StringAugmenter.DoDynamicArguments(script, keys);
     
     script = Class'SS_1984'.static.Literally1984(script);
-    log = Class'SS_ChatFormatter'.static.BuildChatLog(script);
+    log = Class'SS_ChatFormatter'.static.Build(script);
 
     // Add the player response
     EmoteSegment = Class'SS_ChatFormatter'.static.CreateSegment(EmoteText, EmoteIcon, EmoteIcon != None ? GetColor(White) : Class'SS_Color'.static.Hex(Class'SS_CommunicationSettings'.default.ChatEmoteTextColor));
@@ -255,7 +255,7 @@ function AddEmoteToChat(Array<ConversationReplacement> keys, optional Surface Em
     InsertLogIntoChat(log);
 }
 
-function InsertLogIntoChat(OnlineChatLogInfo loginfo)
+function InsertLogIntoChat(OCLogInfo loginfo)
 {
     Class'SS_ChatFormatter'.static.AddStartOfLogIndicator(loginfo);
 
@@ -266,14 +266,14 @@ function InsertLogIntoChat(OnlineChatLogInfo loginfo)
     if(chat.Length > CHAT_ARRAY_LIMIT) chat.Length = CHAT_ARRAY_LIMIT;
 }
 
-function bool LogIsDuplicate(OnlineChatLogInfo loginfo)
+function bool LogIsDuplicate(OCLogInfo loginfo)
 {
     local int i, u, spamlevel, max;
     local bool notDupe;
     
     if(chat.Length <= 0) return false;
         
-    spamlevel = Class'SS_GameMod_PingSystem'.default.AntiSpam;
+    spamlevel = Class'SS_CommunicationSettings'.default.AntiSpam;
     if(spamlevel <= 0) return false;
 
     max = spamlevel >= 2 ? chat.Length : 1;
@@ -291,7 +291,7 @@ function bool LogIsDuplicate(OnlineChatLogInfo loginfo)
         if(spamlevel != 1 && i != 0 && chat[i].lifetime <= 0) break;
         if(i == 0) chat[i].lifetime = GetLifeTime();
         chat[i].Combo++;
-        chat[i].shake = FMin(8, chat[i].shake + chat[i].Combo * 2);
+        chat[i].shake = FMin(15, chat[i].shake + chat[i].Combo * 3);
         return true;
     }
     return false;

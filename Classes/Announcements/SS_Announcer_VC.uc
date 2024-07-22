@@ -34,11 +34,11 @@ function Init()
 
 function OnRemoteEvent(Name EventName)
 {
-    // Class'SS_GameMod_PingSystem'.static.Print("[REMOTE EVENT]" @ EventName);
+    // Class'SS_GameMod_OC'.static.Print("[REMOTE EVENT]" @ EventName);
     switch(EventName)
     {
         case 'RouletteFlash':
-            // Class'SS_GameMod_PingSystem'.static.Print("Caught Event we need to listen to" @ EventName);        
+            // Class'SS_GameMod_OC'.static.Print("Caught Event we need to listen to" @ EventName);        
             break;
     }
 }
@@ -48,7 +48,7 @@ function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
     local Array<ConversationReplacement> keys;
     local WorldInfo wi;
     
-    Class'SS_GameMod_PingSystem'.static.Print(InHUDElement);
+    Class'SS_GameMod_OC'.static.Print(InHUDElement);
 
     if(!Class'SS_CommunicationSettings'.default.EnableVanessaCurse) return;
     if(TeamWinHUDs.Find(Caps(InHUDElement)) == INDEX_NONE) return;

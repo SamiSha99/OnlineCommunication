@@ -4,7 +4,7 @@ Class SS_HUDMenu_PingSystemConfig extends Hat_HUDMenu
 var bool IsConfigLoadout;
 var Hat_HUDMenuSettings oldconfig;
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 
 var Array<SS_Panel> Panels;
 var Array< Class<SS_Panel> > PanelsClasses;
@@ -21,7 +21,7 @@ function OnOpenHUD(HUD H, optional String command)
     local int i;
     local SS_Panel instance;
     Super.OnOpenHUD(H, command);
-    GameMod = SS_GameMod_PingSystem(Class'OnlineCommunication'.static.GetGameMod('SS_GameMod_PingSystem'));
+    GameMod = SS_GameMod_OC(Class'OnlineCommunication'.static.GetGameMod('SS_GameMod_OC'));
     MouseMatInstance = Class'OnlineCommunication'.static.InitMaterial(MouseMat);
     LastMousePosition = GetMousePos(H);
     for(i = 0; i < PanelsClasses.Length; i++)

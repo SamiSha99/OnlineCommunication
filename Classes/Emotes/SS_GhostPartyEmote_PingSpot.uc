@@ -13,9 +13,9 @@ defaultproperties
 
 event static Activate(Actor Player, bool bPlaySound)
 {
-	local SS_GameMod_PingSystem gm;
+	local SS_GameMod_OC gm;
 	Class'WorldInfo'.static.GetWorldInfo().SetTimer(0.01f, false, 'PingFromEmoteRequest');
-	gm = SS_GameMod_PingSystem(Class'OnlineCommunication'.static.GetGameMod('SS_GameMod_PingSystem'));
+	gm = SS_GameMod_OC(Class'OnlineCommunication'.static.GetGameMod('SS_GameMod_OC'));
 	gm.PingFromEmoteRequest(Hat_PlayerController(Hat_Player(Player).Controller));
 }
 
@@ -30,7 +30,7 @@ static function bool IsAllowed(HUD H)
 
 	pc = Hat_PlayerController(H.PlayerOwner);
 	
-	switch(Class'SS_GameMod_PingSystem'.default.PingSpotFeature)
+	switch(Class'SS_CommunicationSettings'.default.PingSpotFeature)
 	{
 		case 3: return true;
 		case 2: return !pc.IsGamepad();

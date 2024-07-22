@@ -16,6 +16,5 @@ event static Activate(Actor Player, bool bPlaySound)
 
 static function bool ShouldDisplay(HUD H)
 {
-	if(Class'SS_GameMod_PingSystem'.default.ToggleAdditionalEmotes != 1) return false;
-	return Super.ShouldDisplay(H);
+	return Class'SS_CommunicationSettings'.default.ToggleAdditionalEmotes && Super.ShouldDisplay(H);
 }

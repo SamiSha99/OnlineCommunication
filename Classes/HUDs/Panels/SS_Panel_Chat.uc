@@ -14,19 +14,34 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ToggleOnlineChat
         ContentName = "ToggleOnlineChat"
+        Config = {(
+            ID = "ToggleOnlineChat",
+            Name = "ToggleOnlineChat",
+            Description = "ToggleOnlineChat_Desc",
+            Default = 1,
+            OptionValues = {(0, 1)},
+            OptionLabels = {("Off", "On")}
+        )}
         ToolTips = ("ToggleOnlineChat_0", "ToggleOnlineChat_1");
     End Object
     Contents.Add(ToggleOnlineChat);
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ToggleAdditionalEmotes
         ContentName = "ToggleAdditionalEmotes"
+        Config = {(
+            ID = "ToggleAdditionalEmotes",
+            Name = "ToggleAdditionalEmotes",
+            Description = "ToggleAdditionalEmotes_Desc",
+            Default = 1,
+            OptionValues = {(0, 1)},
+            OptionLabels = {("Off", "On")}
+        )}
         ToolTips = ("ToggleAdditionalEmotes_0", "ToggleAdditionalEmotes_1", "ToggleAdditionalEmotes_2");
     End Object
     Contents.Add(ToggleAdditionalEmotes);
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableEmotes
         ContentName = "EnableEmotes"
-        IsModConfig = false
         Config = {(
             ID = "EnableEmotes",
             Name = "EnableEmotes",
@@ -41,7 +56,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=ShowWhoHasMod
         ContentName = "ShowWhoHasMod"
-        IsModConfig = false
         Config = {(
             ID = "ShowWhoHasMod",
             Name = "ShowWhoHasMod",
@@ -61,6 +75,14 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGM Name=FilterType 
         ContentName = "FilterType"
+        Config = {(
+            ID = "FilterType",
+            Name = "FilterType",
+            Description = "FilterType_Desc",
+            Default = 1,
+            OptionValues = {(0, 1, 2, 3, 4)},
+            OptionLabels = {("No Filter", "PECK", "Stars", "!@#?$%^&*", "Nice Compliments")}
+        )}
         ToolTips = ("FilterType_0", "FilterType_1", "FilterType_2", "FilterType_3", "FilterType_4", "FilterType_5", "FilterType_6", "FilterType_7");
         ToolTipClass = Class'SS_ContentToolTip_Text_Profanity';
     End Object
@@ -68,6 +90,14 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGM Name=AntiSpam 
         ContentName = "AntiSpam"
+        Config = {(
+            ID = "AntiSpam",
+            Name = "AntiSpam",
+            Description = "AntiSpam_Desc",
+            Default = 1,
+            OptionValues = {(0, 1, 2)},
+            OptionLabels = {("Off", "Last Message", "Visible Messages")}
+        )}
         ToolTips = ("AntiSpam_0", "AntiSpam_1", "AntiSpam_2", "AntiSpam_3")
     End Object
     Contents.Add(AntiSpam); 
@@ -101,7 +131,6 @@ defaultproperties
             OptionValues = {(0, 1)},
             OptionLabels = {("Asterisk", "None")}
         )}
-        IsModConfig = false
         Tooltips = ("StartingLineType_0", "StartingLineType_1");
     End Object
     Contents.Add(StartingLineType);
@@ -114,7 +143,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableJoin
         ContentName = "EnableJoin"
-        IsModConfig = false;
         Config = {(
             ID = "EnableJoin",
             Name = "EnableJoin",
@@ -129,7 +157,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableLeave
         ContentName = "EnableLeave"
-        IsModConfig = false;
         Config = {(
             ID = "EnableLeave",
             Name = "EnableLeave",
@@ -144,7 +171,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableTimePiece
         ContentName = "EnableTimePiece"
-        IsModConfig = false;
         Config = {(
             ID = "EnableTimePiece",
             Name = "EnableTimePiece",
@@ -159,7 +185,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableConnectionFailed
         ContentName = "EnableConnectionFailed"
-        IsModConfig = false;
         Config = {(
             ID = "EnableConnectionFailed",
             Name = "EnableConnectionFailed",
@@ -174,7 +199,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableVanessaCurse
         ContentName = "EnableVanessaCurse"
-        IsModConfig = false;
         Config = {(
             ID = "EnableVanessaCurse",
             Name = "EnableVanessaCurse",
@@ -189,7 +213,6 @@ defaultproperties
 
     Begin Object Class=SS_PanelContent_ConfigGMCheckbox Name=EnableDeathWish
         ContentName = "EnableDeathWish"
-        IsModConfig = false;
         Config = {(
             ID = "EnableDeathWish",
             Name = "EnableDeathWish",

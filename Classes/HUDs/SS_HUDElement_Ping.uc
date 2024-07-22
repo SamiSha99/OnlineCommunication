@@ -1,7 +1,7 @@
 // Shows icon location on Preview
 Class SS_HUDElement_Ping extends Hat_HUDElement;
 
-var SS_GameMod_PingSystem GameMod;
+var SS_GameMod_OC GameMod;
 
 var bool bPingPreview;
 

@@ -91,7 +91,7 @@ static function PingLocalizedResult OnPingingTarget(Actor target, Vector pingLoc
     
     key = mainKey;
     // no key = no input, in debugging ignore
-    if(!TryToLocalizePing(key, sectionRes, sections) && !Class'Engine'.static.IsEditor() && Class'SS_GameMod_PingSystem'.default.ToggleDebugging != 1) key = "";
+    if(!TryToLocalizePing(key, sectionRes, sections) && !Class'Engine'.static.IsEditor() && !Class'SS_CommunicationSettings'.default.ToggleDebugging) key = "";
 
     return CreateLocalizedResult(key, sectionRes, target, pingLocation, keys);
 }
@@ -147,9 +147,9 @@ static function bool TryPing(Hat_PlayerController pc, out PingLocalizedResult re
     wi.FlushPersistentDebugLines();
     Debug_DrawLines(0.1f, 0.7f, StartTraceLocation, EndTraceLocation, red);
     
-    Class'SS_GameMod_PingSystem'.static.Print("Possible Sections:" @ sections);
+    Class'SS_GameMod_OC'.static.Print("Possible Sections:" @ sections);
 
-    Class'SS_GameMod_PingSystem'.static.Print("=== TRACE 1 | INTERSECT BLOCKING MESH ===");
+    Class'SS_GameMod_OC'.static.Print("=== TRACE 1 | INTERSECT BLOCKING MESH ===");
     // first trace hits polygons and line of sight
     foreach pc.Pawn.TraceActors(Class'Actor', a, HitLoc, HitNormal, EndTraceLocation, StartTraceLocation,, HitInfo, wi.TRACEFLAG_Blocking)
     {
@@ -169,7 +169,7 @@ static function bool TryPing(Hat_PlayerController pc, out PingLocalizedResult re
         return true;
     }
 
-    Class'SS_GameMod_PingSystem'.static.Print("=== TRACE 2 | INTERSECT BLOCKING/TOUCH COLLIDER ===");
+    Class'SS_GameMod_OC'.static.Print("=== TRACE 2 | INTERSECT BLOCKING/TOUCH COLLIDER ===");
     // second trace does a collision checks in the line to not casually ping meshes for accuracy
     foreach pc.Pawn.TraceActors(Class'Actor', a, HitLoc, HitNormal, EndTraceLocation, StartTraceLocation,, HitInfo)
     {
@@ -211,7 +211,7 @@ static function PingLocalizedResult CreateLocalizedResult(string localization, s
     i = 0;
     obj = actor;
     key = Repl(actor, "_" $ GetRightMost(actor), "", false);
-    Class'SS_GameMod_PingSystem'.static.Print("First MeshClass Check [" $ 0 $ "] | Key =>" @ key @ "| Object =>" @ obj);
+    Class'SS_GameMod_OC'.static.Print("First MeshClass Check [" $ 0 $ "] | Key =>" @ key @ "| Object =>" @ obj);
     do
     {   
         if(PingHasOption("Mesh", key, localization)) 
@@ -224,7 +224,7 @@ static function PingLocalizedResult CreateLocalizedResult(string localization, s
         key = i == 0 ? String(obj.default.ObjectArchetype.Class.Name) : String(obj.ObjectArchetype.Class.Name);
         obj = i == 0 ? obj.default.ObjectArchetype : obj.ObjectArchetype;
         i++;
-        Class'SS_GameMod_PingSystem'.static.Print("Next MeshClass Check [" $ i $ "] | Key =>" @ key @ "| Object =>" @ obj);
+        Class'SS_GameMod_OC'.static.Print("Next MeshClass Check [" $ i $ "] | Key =>" @ key @ "| Object =>" @ obj);
     }
     until(obj.Class == Class'Object' || obj.Class == Class'Actor' || i >= 50); // to infinity™ and break
     
@@ -273,6 +273,18 @@ static function bool ShouldIgnore(Actor a, TraceHitInfo hitinfo)
     return false;
 }
 
+static function bool PingHasCustomSound(string section, string key, int desperationLevel, optional out string result)
+{
+    while(desperationLevel > 0)
+    {
+        result = Localize(section, key $ "_l" $ desperationLevel, "pings_sound");
+        if(!Class'Hat_Localizer'.static.ContainsErrorString(result)) return true;
+        desperationLevel--;
+    }
+    return false;
+}
+
+
 static function bool PingHasOption(string section, string key, optional out string result)
 {
     result = Localize(section, key, "pings_options");
@@ -283,7 +295,7 @@ static function Debug_DrawSphere(float minRad, float maxRad, Vector center, Colo
 {
     local WorldInfo wi;
     local float radius;
-    if(Class'SS_GameMod_PingSystem'.default.ToggleDebugging == 0) return;
+    if(!Class'SS_CommunicationSettings'.default.ToggleDebugging) return;
     wi = Class'WorldInfo'.static.GetWorldInfo();
     for(radius = minRad; radius < maxRad; radius += increaseRate)
         wi.DrawDebugSphere(center, radius, 8, c.R, c.G, c.B, true);
@@ -293,7 +305,7 @@ static function Debug_DrawLines(float minRad, float maxRad, Vector start, Vector
 {
     local WorldInfo wi;
     local float radius;
-    if(Class'SS_GameMod_PingSystem'.default.ToggleDebugging == 0) return;
+    if(!Class'SS_CommunicationSettings'.default.ToggleDebugging) return;
     wi = Class'WorldInfo'.static.GetWorldInfo();
     for(radius = minRad; radius < maxRad; radius += increaseRate)
         wi.DrawDebugCylinder(start, end, radius, 8, c.R, c.G, c.B, true);
@@ -304,7 +316,7 @@ static function Debug_DrawBox(float thickMin, float thickMax, Vector center, Vec
     local WorldInfo wi;
     local float radius;
     local Vector e;
-    if(Class'SS_GameMod_PingSystem'.default.ToggleDebugging == 0) return;
+    if(!Class'SS_CommunicationSettings'.default.ToggleDebugging) return;
     wi = Class'WorldInfo'.static.GetWorldInfo();
     e = extent;
     e /= 20.0f;

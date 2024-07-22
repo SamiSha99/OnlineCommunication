@@ -26,7 +26,6 @@ function OnClickContent(HUD H, SS_Panel panel, string arg)
 
 defaultproperties
 {
-    IsModConfig = true;
     Buttons(0) = {(
         Argument = "uncheck",
         Material = MaterialInstanceConstant'SS_PingSystem_Content.UIButton_Exit',
