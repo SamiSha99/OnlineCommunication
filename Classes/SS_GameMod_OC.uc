@@ -624,14 +624,12 @@ function OpenConfigMenuViaLoadout(HUD InHUD)
 function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string parameters)
 {
     local Array<Dictionary> mapDict;
-    local string localization, section, map, target, channel;
+    local Array<ConversationReplacement> keys;
+    local string localization, section, map, target, channel, targetName, targetID;
+    local float range;
     local Vector loc;
     local Rotator r;
-    local Array<ConversationReplacement> keys;
-    local float range;
     local Actor a, targetActor;
-    local string targetName, targetID;
-    // local Class<Hat_SnatcherContract_DeathWish> dwC;
 
     if(InStr(parameters, "=") == INDEX_NONE) return;
     
@@ -716,7 +714,8 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
             else
                 Class'DictionaryTools'.static.GetValueVector(loc, mapDict, "x", "y", "z");
             
-            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,x,y,z,offsetRange,dirP,dirY,dirR");
+            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,x,y,z,offsetRange,dirP,dirY,dirR,owner");
+            Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", Sender.GetNetworkingIDString()$"_"$Sender.SubID);
             SpawnGhostPing(loc, localization, section, targetActor, Sender, keys);
             break;
         
@@ -741,7 +740,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
 
             // No map limit, but if people want it? sure.
             if(Class'DictionaryTools'.static.GetValueBool(mapDict, "isMapSpecific") && !(Sender.CurrentMapName ~= map)) return;
-            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,isMapSpecific");
+            keys = Class'DictionaryTools'.static.BuildKeyReplacements(mapDict, "localization,section,isMapSpecific,owner");
             Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", Sender.GetNetworkingIDString()$"_"$Sender.SubID);
             OnRecievedChatLogCommand(localization, section, "announcements", keys);
             break;
