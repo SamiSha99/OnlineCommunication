@@ -495,4 +495,16 @@ defaultproperties
 	FoulWords.Add("willy");
 	FoulWords.Add("xrated");
 	FoulWords.Add("xxx");
+
+    // From this point forward, some custom ones
+    FoulWords.Add("hitler");
+    FoulWords.Add("sandnigger");
+    FoulWords.Add("sand nigger");
+    FoulWords.Add("sand-nigger");
+    FoulWords.Add("tranny");
+    FoulWords.Add("trannie");
+    FoulWords.Add("trannies");
+    FoulWords.Add("tranoids");
+    FoulWords.Add("tranoid");
+    FoulWords.Add("troon");
 }
