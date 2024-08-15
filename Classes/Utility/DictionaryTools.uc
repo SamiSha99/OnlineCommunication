@@ -1,5 +1,52 @@
 Class DictionaryTools extends Object;
+/*
+* Example:
+*   rawData = "name=sami&age=25&height=1.82&Collected_Super_Awesome_Green_Time_Piece=true"
+* 
+* Pass into: BuildDictionaryArray();
 
+    local Array<Dictionary> myDictionary;
+    myDictionary = Class'DictionaryTools'.static.BuildDictionaryArray(rawData);
+*
+* result in:
+*
+    Dictionary(0)=(key="name", value="sami");
+    Dictionary(1)=(key="age", value="25");
+    Dictionary(2)=(key="height", value="1.82");
+    Dictionary(3)=(key="Collected_Super_Awesome_Green_Time_Piece", value="true");
+*   
+* To extract data from the Dictionary structure call GetValue to get the value as a string, 
+* or GetValueT where T represents a type, currently supported: int, float, bool, vector and rotator, see down below for their function names
+* Example:
+*
+    local string myName;
+    local int myAge;
+    local float myHeight;
+
+    Class'DictionaryTools'.static.GetValue("name", myDictionary, myName);
+    Class'DictionaryTools'.static.GetValueInt("age", myDictionary, myAge);
+    Class'DictionaryTools'.static.GetValueFloat("height", myDictionary, myHeight);
+    `broadcast("Name:" @ myName @ "| Age:" @ myAge @ "| Height:" @ myHeight);
+*
+* Pro tip:
+* All GetValue functions return a true/false, GetValueBool doesn't have an out (not allowed in UnrealScript) so they will return true if valid:
+*
+    local string extractedValue;
+    if(Class'DictionaryTools'.static.GetValue("name", myDictionary, extractedValue))
+    {
+        // This code here will run ONLY if this value is defined!
+        // do stuff...
+    }
+
+    // Returns true if: 1) Defined 2) Value ~= "true" 3) Value is larger than 0 (if == 0 then false)
+    if(Class'DictionaryTools'.static.GetValueBool("Collected_Super_Awesome_Green_Time_Piece", myDictionary))
+    {
+        // It passed! Do stuff...
+    }
+* 
+*/
+
+// You can change these to fit your set up.
 const AND_PARAMETER = "&";
 const KEY_EQUAL = "=";
 
@@ -17,7 +64,6 @@ static function Dictionary Dict(string key, string value)
     return d; 
 }
 
-// rawData example: name=sami,age=24,height=1.82 meters (yes i'm tall)
 static function Array<Dictionary> BuildDictionaryArray(string rawData)
 {
     local Array<String> dictionaryEntries, dictionaryRes;
@@ -50,15 +96,6 @@ static function Array<ConversationReplacement> BuildKeyReplacements(Array<Dictio
     return keys;
 }
 
-static function bool ExtractAndInsert(out Array<ConversationReplacement> keys, Array<Dictionary> d, string key)
-{
-    local string value;
-    if(!GetValue(value, d, key)) return false;
-    
-    Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, key, value);
-    return true;
-}
-
 static function bool Empty(Array<Dictionary> d)
 {
     return d.Length <= 0;
@@ -78,7 +115,7 @@ static function bool GetValue(out string strRes, Array<Dictionary> d, string key
     return true;
 }
 
-// Returns the value as float
+// Returns the value as a float
 static function bool GetValueFloat(out float floatRes, Array<Dictionary> d, string key)
 {
     local string res;
@@ -87,7 +124,7 @@ static function bool GetValueFloat(out float floatRes, Array<Dictionary> d, stri
     return true;
 }
 
-// Returns the value as integer
+// Returns the value as an integer
 static function bool GetValueInt(out int intRes, Array<Dictionary> d, string key)
 {
     local string res;
@@ -96,6 +133,7 @@ static function bool GetValueInt(out int intRes, Array<Dictionary> d, string key
     return true;
 }
 
+// Returns the value as a Vector
 static function bool GetValueVector(out Vector vectorRes, Array<Dictionary> d, string xKey, string yKey, string zKey)
 {
     local bool x, y, z;
@@ -111,6 +149,7 @@ static function bool GetValueVector(out Vector vectorRes, Array<Dictionary> d, s
     return x || y || z;
 }
 
+// Returns the value as a Rotator
 static function bool GetValueRotator(out Rotator rotatorRes, Array<Dictionary> d, string pitchKey, string yawKey, string rollKey)
 {
     local bool p, y, r;
@@ -128,7 +167,7 @@ static function bool GetValueRotator(out Rotator rotatorRes, Array<Dictionary> d
 
 // Returns true if key is defined and has one of the values:
 // 1) True
-// 2) 1 or Bigger than 0
+// 2) Bigger than 0
 static function bool GetValueBool(Array<Dictionary> d, string key)
 {
     local string res;
