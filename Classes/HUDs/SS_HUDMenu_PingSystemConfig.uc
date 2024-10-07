@@ -34,20 +34,34 @@ function OnOpenHUD(HUD H, optional String command)
 
 function OnOpenHUDFromConfigLoadout(Hat_HUD H)
 {
+    local Hat_HUDMenu_ModLevelSelect modSelect;
     IsConfigLoadout = true;
     HideIfPaused = false;
     oldconfig = Hat_HUDMenuSettings(h.GetHUD(Class'Hat_HUDMenuSettings'));
-    oldconfig.Enabled = false;
+    if(oldconfig != None)
+    {
+        oldconfig.Enabled = false;
+        oldconfig.Current_Menu = none;
+    }
+    modSelect = Hat_HUDMenu_ModLevelSelect(H.GetHUD(Class'Hat_HUDMenu_ModLevelSelect'));
+    if(modselect != None)
+    {
+        modSelect.IsMenuFrozen = true;
+    }
 }
 
 function OnCloseHUD(HUD H)
 {
     local int i;
+    local Hat_HUDMenu_ModLevelSelect modSelect;
     
     if(oldconfig != None)
     {
         CloseHUD(H, oldconfig.class);
     }
+    modSelect = Hat_HUDMenu_ModLevelSelect(Hat_HUD(H).GetHUD(Class'Hat_HUDMenu_ModLevelSelect'));
+    if(modselect != None)
+        modSelect.IsMenuFrozen = false;
 
     if(GameMod.ActiveInputContentPanel != None)
     {

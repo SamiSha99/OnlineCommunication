@@ -256,9 +256,10 @@ function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
         // to-do: run the check after a frame and see if the passed preview in this settings menu is the right one
         if(modselect != None && (modselect.PreviewMod.PackageName ~= "OnlineCommunication" || modselect.PreviewMod.WorkshopId == GetGameModFromClass(Class).WorkshopID))
         {
-            Print("You thought it was going to automatically open the extended config menu but it was me Dio!");
-            Print("modselect != None =?" @ modselect != None @ "| modselect.PreviewMod.PackageName =>" @ modselect.PreviewMod.PackageName);
-            Print("modselect.PreviewMod.WorkshopId" @ modselect.PreviewMod.WorkshopId @ "| GetGameModFromClass(Class).WorkshopID =>" @ GetGameModFromClass(Class).WorkshopID);
+            modselect.IsMenuFrozen = true;
+            // Print("You thought it was going to automatically open the extended config menu but it was me Dio!");
+            // Print("modselect != None =?" @ modselect != None @ "| modselect.PreviewMod.PackageName =>" @ modselect.PreviewMod.PackageName);
+            // Print("modselect.PreviewMod.WorkshopId" @ modselect.PreviewMod.WorkshopId @ "| GetGameModFromClass(Class).WorkshopID =>" @ GetGameModFromClass(Class).WorkshopID);
         
             SetTimer(0.01f, false, nameof(OpenConfigMenuViaLoadout), self, InHUD);
         }

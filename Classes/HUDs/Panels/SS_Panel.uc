@@ -318,7 +318,6 @@ function bool OnPressUp(HUD H, bool menu, bool release)
 
 function bool OnPressDown(HUD H, bool menu, bool release)
 {
-    
     local int index;
     return false;
     if(release) return false;
