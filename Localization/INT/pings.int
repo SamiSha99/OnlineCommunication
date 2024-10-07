@@ -198,6 +198,7 @@ Hat_PlayerTransport_SpringPad = @{>pings>default>Hat_DiveBoard_Statue}
 ; CARRY OBJECTS
 Hat_CarryObject = [owner] wants to carry an @{~OC|object}!
 Hat_CarryObject_BeachBall = [owner] wants to play with a @{~OC|Beach Ball}!
+Hat_CarryObject_BirthdayBall = [owner] wants to play with the @{~OC|Birthday Ball}!
 Hat_CarryObject_Event_Winter_Present = [owner] wants to give a @{~OC|Present}!
 Hat_CarryObject_Bucket = [owner] wants to carry a @{~OC|Bucket}!
 Hat_CarryObject_CrabBucket = [owner] wants to carry a @{~OC|Crab Bucket}!
