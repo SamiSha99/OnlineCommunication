@@ -120,4 +120,11 @@ defaultproperties
 		directory = "hatintimegamecontent",
 		collisionHeight = {(x = 20, y = 20)}
 	)};
+    
+    references(2) = {(
+		classIdentifier = Class'Hat_NPC_Snatcher',
+		className = "Hat_NPC_Snatcher",
+		directory = "hatintimegamecontent",
+		collisionHeight = {(x = 75, y = 200)}
+	)};
 }

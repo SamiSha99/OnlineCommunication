@@ -111,7 +111,8 @@ function AddContractListener(Class<Hat_SnatcherContract_DeathWish> contract)
 
 function string GetAnnouncementSection(Class<Hat_SnatcherContract_DeathWish> contract)
 {
-    if(class'Hat_SeqCond_IsTimedEvent'.static.IsTimedEvent(ETimedEvent_Summer) && ClassIsChildOf(contract, Class'Hat_SnatcherContract_Summer_Procedural')) return "contracts_summer";
+    if(class'Hat_SeqCond_IsTimedEvent'.static.IsTimedEvent(ETimedEvent_Summer) && (contract.default.TimedEvent == ETimedEvent_Summer || ClassIsChildOf(contract, Class'Hat_SnatcherContract_Summer_Procedural'))) return "contracts_summer";
+    if(class'Hat_SeqCond_IsTimedEvent'.static.IsTimedEvent(ETimedEvent_Winter) && contract.default.TimedEvent == ETimedEvent_Winter) return "contracts_winter";
     return "contracts";
 }
 

@@ -29,7 +29,7 @@ ToggleAdditionalEmotes = Toggle Extra Emotes
 ToggleDebugging = Toggle Debugging
 
 ; Ping
-CustomSoundPackage = Custom Sound Path (WIP)
+CustomSoundPackage = Custom Sound Path
 
 PingCrossHairAlpha = Transparency
 PingCrossHairSize = Size

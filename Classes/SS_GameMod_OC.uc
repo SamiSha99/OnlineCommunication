@@ -733,6 +733,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
             {
                 case "contracts":
                 case "contracts_summer":
+                case "contracts_winter":
                     break;
                 default:
                     section = "contracts";
