@@ -782,7 +782,7 @@ function bool TryPing(Hat_PlayerController pc)
     
     if(pingSpawned)
     {
-        if(OnlineChatHUD != None)
+        if(OnlineChatHUD != None && !(result.section ~= "DISABLED"))
         {
             foreach LocalReader(lr)
             {
@@ -862,7 +862,8 @@ function SpawnGhostPing(Vector loc, optional string localization = "", optional 
         customSound = SoundCue(DynamicLoadObject(soundPath, Class'SoundCue', true));
     Class'SS_Ping_Helpers'.static.TriggerPingSound(loc, Sender.GhostActor, grRes.Desperation, customSound);
     
-    if(OnlineChatHUD == None) return;
+    // If a localization is set to [DISABLED] with nothing else, it will avoid logging this to the chat
+    if(OnlineChatHUD == None || section ~= "DISABLED") return;
     Class'SS_ChatFormatter'.static.AddKeywordReplacement(keys, "owner", sender.GetNetworkingIDString() $ "_" $ sender.SubID);
     OnRecievedChatLogCommand(localization, section, "pings", keys);
 }

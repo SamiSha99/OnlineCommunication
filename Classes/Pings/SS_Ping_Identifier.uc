@@ -113,6 +113,11 @@ static function bool TryToLocalize(string key, out string sectionRes, optional s
     {
         Class'SS_ChatFormatter'.static.GetLocalizationLog(key, s, "pings", localizationRes);
         if(Class'Hat_Localizer'.static.ContainsErrorString(localizationRes)) continue;
+        if(localizationRes ~= "[DISABLED]")
+        {
+            sectionRes = "DISABLED";
+            return true;
+        }
         sectionRes = s;
         return true;
     }

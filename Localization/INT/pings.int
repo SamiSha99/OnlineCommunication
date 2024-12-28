@@ -4,6 +4,9 @@
 
 ; Contains all localization keys for pinging actors in the world
 
+; [Carnival_MainMap]
+; Hat_BonfireBarrier = [DISABLED]
+
 [castle_mu]
 Hat_NumberTicketDispenser = [owner] wants to @{~OC|take a turn in being judged}!
 Hat_TimeObject_Cluster = [owner] wants to @{~IC|return Home}![icon=timepiece]
@@ -278,6 +281,7 @@ Hat_Door = [owner] wants to go through a @{~LC|door}!
 Hat_DoorTrain = @{>pings>default>Hat_Door}
 Hat_Button_Base = [owner] wants to push the @{~OC|button}!
 Hat_ShipHologram = [owner] wants to look at the @{~OC|Ship Hologram}!
+Hat_BonfireBarrier = [owner] wants to clear the @{~IC|fire barrier}!
 
 Hat_MetroTicketBooth = [owner] wants to purchase a @{~IC|Metro Ticket} [icon=metro_yellow]!
 
