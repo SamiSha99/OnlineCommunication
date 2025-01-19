@@ -6,9 +6,9 @@
 
 # An A Hat in Time Mod for the Steam Workshop
 
-**Download the mod from the Steam Workshop [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3276508705).**
-
-**See the [Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki) for any questions or help.**
+* **[Steam Workshop Download](https://steamcommunity.com/sharedfiles/filedetails/?id=3276508705)**
+* **[Template Example](https://steamcommunity.com/sharedfiles/filedetails/?id=3393953936)**
+* **[Mod Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki)**
 
 Expand your Online Party experience by improving your ways to communicate with others.
 
@@ -23,4 +23,4 @@ Completely customizable mod to fit your needs in many different situations:
 * Streamer Mode.
 * Color Blindness Mode.
 
-This mod is exclusive to the Steam version of A Hat in Time due it's usage of [Steam Networking API](https://partner.steamgames.com/doc/features/multiplayer/networking) as it was [explained by Gears for Breakfast](https://support.hatintime.com/hc/en-us/articles/360021915254-How-was-Online-Party-achieved).
+This mod is exclusive to the Steam version of A Hat in Time due to it's usage of [Steam Networking API](https://partner.steamgames.com/doc/features/multiplayer/networking) as it was [explained by Gears for Breakfast](https://support.hatintime.com/hc/en-us/articles/360021915254-How-was-Online-Party-achieved).
