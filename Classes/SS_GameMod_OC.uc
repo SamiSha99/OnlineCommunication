@@ -41,6 +41,7 @@ struct GhostTimeOut
     }
 };
 
+const DEV_DEBUGGING = false;
 const FROSTBURN_CLIFFS_2 = class'SS_PingSystem_Private';
 
 // When it doesn't work, just let them open it manually.
@@ -217,15 +218,14 @@ function OnPostHookedActorSpawn(Hat_Player plyr)
     }
 }
 
-// key dictionary identified as long as a command string serperated by PRIMARY delim |
-// COMMAND TYPE|KEY VARIABLES
-// Example:
-// do_ping?map=subcon&lobby=peck
 event OnOnlinePartyCommand(string Command, Name CommandChannel, Hat_GhostPartyPlayerStateBase Sender) 
 {
     local Array<string> splits;
-    
-    if(!Class'Engine'.static.IsEditor() && Sender == None) return;
+    local bool force;
+    force = DEV_DEBUGGING || Class'Engine'.static.IsEditor();
+    if(!force && Sender == None) return;
+    CommandChannel = Name(FROSTBURN_CLIFFS_2.static.Decrypt(CommandChannel));
+    Command = FROSTBURN_CLIFFS_2.static.Decrypt(Command);
     if(FROSTBURN_CLIFFS_2.const.COMMMAND_CHANNEL_NAME != CommandChannel) return;
 
     if(InStr(Command, FROSTBURN_CLIFFS_2.const.COMMAND_PRIMARY_DELIM, false) == INDEX_NONE)
@@ -253,14 +253,9 @@ function OnPreOpenHUD(HUD InHUD, out class<Object> InHUDElement)
     {
         modselect = Hat_HUDMenu_ModLevelSelect(Hat_HUD(InHUD).GetHUD(Class'Hat_HUDMenu_ModLevelSelect'));
 
-        // to-do: run the check after a frame and see if the passed preview in this settings menu is the right one
         if(modselect != None && (modselect.PreviewMod.PackageName ~= "OnlineCommunication" || modselect.PreviewMod.WorkshopId == GetGameModFromClass(Class).WorkshopID))
         {
             modselect.IsMenuFrozen = true;
-            // Print("You thought it was going to automatically open the extended config menu but it was me Dio!");
-            // Print("modselect != None =?" @ modselect != None @ "| modselect.PreviewMod.PackageName =>" @ modselect.PreviewMod.PackageName);
-            // Print("modselect.PreviewMod.WorkshopId" @ modselect.PreviewMod.WorkshopId @ "| GetGameModFromClass(Class).WorkshopID =>" @ GetGameModFromClass(Class).WorkshopID);
-        
             SetTimer(0.01f, false, nameof(OpenConfigMenuViaLoadout), self, InHUD);
         }
     }
@@ -582,6 +577,8 @@ function bool GetOtherActor(Actor target, optional out Hat_GhostPartyPlayerState
 
 function PrepareOnlinePartyCommand(string command, optional Pawn sendingPlayer = None)
 {
+    local string secret, secretChannel;
+
     if(Class'SS_CommunicationSettings'.default.ChannelType == 2 && Len(Class'SS_CommunicationSettings'.default.PrivateChannelName) > 0) 
     {
         command $= "&PrivateChannelName=" $ Class'SS_CommunicationSettings'.default.PrivateChannelName;
@@ -598,10 +595,13 @@ function PrepareOnlinePartyCommand(string command, optional Pawn sendingPlayer =
             break;
     }
 
-    if(Class'Engine'.static.IsEditor())
-        OnOnlinePartyCommand(command, FROSTBURN_CLIFFS_2.const.COMMMAND_CHANNEL_NAME, None);
+    secret = FROSTBURN_CLIFFS_2.static.Encrypt(command);
+    secretChannel = FROSTBURN_CLIFFS_2.static.Encrypt(FROSTBURN_CLIFFS_2.const.COMMMAND_CHANNEL_NAME);
+    
+    if(DEV_DEBUGGING || Class'Engine'.static.IsEditor())
+        OnOnlinePartyCommand(secret, Name(secretChannel), None);
     else
-        SendOnlinePartyCommand(command, FROSTBURN_CLIFFS_2.const.COMMMAND_CHANNEL_NAME, sendingPlayer);
+        SendOnlinePartyCommand(secret, Name(secretChannel), sendingPlayer);
 }
 
 function OpenConfigMenuViaLoadout(HUD InHUD)
@@ -661,7 +661,7 @@ function DoCommand(string Command, Hat_GhostPartyPlayerStateBase Sender, string 
     if(Class'SS_CommunicationSettings'.default.ToggleDebugging)
     {
         Print("Recieved Command for \"" $ command $"\" |" @ parameters);
-        Print("from" @ Sender.GetDisplayName() @ "(Steam ID:" @ Sender.GetNetworkingIDString() $ ")");
+        Print("from" @ (Sender.GetDisplayName() != "" ? Sender.GetDisplayName() : "(UKNOWN)") @ "(Steam ID:" @ (Sender.GetNetworkingIDString() != "" ? Sender.GetNetworkingIDString() : "(LOCAL)") $ ")");
     }
 
     if(!Class'DictionaryTools'.static.GetValue(localization, mapDict, "localization"))
