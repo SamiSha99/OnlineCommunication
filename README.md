@@ -1,10 +1,10 @@
-# Online Communication
+## Online Communication
 
 ![Online Communication](https://i.imgur.com/Bt41mUz.png)
 
 ---
 
-# An A Hat in Time Mod for the Steam Workshop
+## An A Hat in Time Mod for the Steam Workshop
 
 * **[Steam Workshop Download](https://steamcommunity.com/sharedfiles/filedetails/?id=3276508705)**
 * **[Template Example](https://steamcommunity.com/sharedfiles/filedetails/?id=3393953936)**
@@ -23,4 +23,7 @@ Completely customizable mod to fit your needs in many different situations:
 * Streamer Mode.
 * Color Blindness Mode.
 
-This mod is exclusive to the Steam version of A Hat in Time due to it's usage of [Steam Networking API](https://partner.steamgames.com/doc/features/multiplayer/networking) as it was [explained by Gears for Breakfast](https://support.hatintime.com/hc/en-us/articles/360021915254-How-was-Online-Party-achieved).
+## Notice
+
+* This mod is exclusive to the Steam version of A Hat in Time due to it's usage of [Steam Networking API](https://partner.steamgames.com/doc/features/multiplayer/networking) as it was [explained by Gears for Breakfast](https://support.hatintime.com/hc/en-us/articles/360021915254-How-was-Online-Party-achieved).
+* This repository is only available for educational purposes and showcase, it is NOT functional to run because it's missing a file named `SS_PingSystem_Private` which is `.gitignore`-d for safety reasons, if you want to implement content to the mod, please contact via GitHub Issues, Discord via [A Hat in Time Discord](https://discord.gg/AHatinTime) (friend requests are disabled for everyone) or read the [Wiki](https://github.com/SamiSha99/OnlineCommunication/wiki) to see how it works
