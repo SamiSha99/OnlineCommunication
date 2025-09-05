@@ -35,7 +35,67 @@ StaticMeshActor_151 = [owner] wants to pull the @{~OC|lever}!
 ; Microwave
 StaticMeshActor_763 = [owner] wants to punish @{~OC|bad food}!
 
+; Anamoly Machine in the lobby
+StaticMeshActor_100 = [owner] wants to look for @{~IC|rare signals}!
+
 Hat_NPC_Snatcher_3 = [owner] wants to play @{~LC|Death Wish}![icon=dw]
+
+; Rooms in the Spaceship
+; Power Panels
+Hat_SpaceShipPowerPanel_0 = [owner] wants to head into the @{~LC|Attic}!
+Hat_SpaceShipPowerPanel_1 = [owner] wants to head into the @{~LC|Kitchen}!
+Hat_SpaceShipPowerPanel_2 = [owner] wants to head into the @{~LC|Basement}!
+Hat_SpaceShipPowerPanel_3 = [owner] wants to head into the @{~LC|Bedroom}!
+Hat_SpaceShipPowerPanel_4 = [owner] wants to head into the @{~LC|Machine Room}!
+Hat_SpaceShipPowerPanel_5 = [owner] wants to head into the @{~LC|Laundry Room}!
+
+; Living Room 
+; -> Basement
+; -> Bedroom
+; -> Machine Room
+; -> Kitchen
+; -> Attic
+Hat_DoorSpaceship_0 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_2}
+Hat_DoorSpaceship_6 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_3}
+Hat_DoorSpaceship_15 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_4}
+Hat_SpringDoors_1 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_1}
+Hat_SpringDoors_2 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_1}
+
+; Basement
+; -> Laundry
+; -> Lab
+; -> Living Room
+StaticMeshActor_1339 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_5}
+Hat_DoorSpaceship_2 = [owner] wants to head into the @{~LC|Lab}!
+Hat_DoorSpaceship_1 = [owner] wants to head into the @{~LC|Living Room}!
+
+; Lab
+; -> Basement
+; -> Storage
+Hat_DoorSpaceship_19 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_2}
+Hat_ChallengeRoomManhole_0 = [owner] wants to head into the @{~LC|Storage Room}!
+
+; Storage
+; -> Lab
+Hat_SpringBase_Teleport_1 = @{>pings>hub_spaceship>Hat_DoorSpaceship_2}
+
+; Machine Room
+; -> Living Room
+; -> Gallery
+Hat_DoorSpaceship_18 = @{>pings>hub_spaceship>Hat_DoorSpaceship_1}
+Hat_DoorSpaceship_3 = [owner] wants to head into the @{~LC|Gallery}!
+
+; Gallery
+; -> Machine Room
+Hat_DoorSpaceship_20 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_4}
+
+; Bedroom
+; -> Living Room
+Hat_DoorSpaceship_13 = @{>pings>hub_spaceship>Hat_DoorSpaceship_1}
+
+; Laundry
+: -> Storage
+StaticMeshActor_1551 = @{>pings>hub_spaceship>Hat_SpaceShipPowerPanel_5}
 
 [default]
 
@@ -282,6 +342,9 @@ Hat_DoorTrain = @{>pings>default>Hat_Door}
 Hat_Button_Base = [owner] wants to push the @{~OC|button}!
 Hat_ShipHologram = [owner] wants to look at the @{~OC|Ship Hologram}!
 Hat_BonfireBarrier = [owner] wants to clear the @{~IC|fire barrier}!
+
+Hat_SpaceShipPowerPanel = [owner] wants to head into a @{~LC|room}!
+Hat_DoorSpaceship = @{>pings>default>Hat_SpaceShipPowerPanel}
 
 Hat_MetroTicketBooth = [owner] wants to purchase a @{~IC|Metro Ticket} [icon=metro_yellow]!
 

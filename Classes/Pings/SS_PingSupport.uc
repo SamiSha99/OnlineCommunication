@@ -127,4 +127,11 @@ defaultproperties
 		directory = "hatintimegamecontent",
 		collisionHeight = {(x = 75, y = 200)}
 	)};
+
+	references(3) = {(
+		classIdentifier = Class'Hat_SpaceshipPowerPanel',
+		className = "Hat_SpaceshipPowerPanel",
+		directory = "hatintimegamecontent",
+		collisionHeight = {(x = 75, y = 60)}
+	)}
 }
