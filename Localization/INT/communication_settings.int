@@ -226,7 +226,7 @@ ObjectColor_Example_2 = Adjusts the color of @{~OC|very basic tasks/items}.
 ; CHAT SETTINGS
 
 FilterType_0 = [color=#78eb36]Default: PECK[/color]
-FilterType_1 = Timmy: Ah [color=ruby]crap[/color], that is NOT radical to swear!
+FilterType_1 = Timmy: Ah [color=ruby]shit[/color], here we go again!
 FilterType_2 = Example:
 FilterType_3 = [color=gold]Nice Compliments[/color] - Replaces words with nice compliments.
 FilterType_4 = [color=gold]!@#$%^&*?[/color] - Similar to Stars.

@@ -138,7 +138,7 @@ defaultproperties
 	FoulWords.Add("coksucka");
 	FoulWords.Add("coon");
 	FoulWords.Add("cox");
-	FoulWords.Add("crap");
+	// FoulWords.Add("crap");
 	FoulWords.Add("cum");
 	FoulWords.Add("cummer");
 	FoulWords.Add("cumming");
@@ -262,7 +262,7 @@ defaultproperties
 	FoulWords.Add("goddamn");
 	FoulWords.Add("goddamned");
 	FoulWords.Add("hardcoresex");
-	FoulWords.Add("hell");
+	// FoulWords.Add("hell"); // ok
 	FoulWords.Add("heshe");
 	FoulWords.Add("hoar");
 	FoulWords.Add("hoare");
@@ -461,7 +461,7 @@ defaultproperties
 	FoulWords.Add("teez");
 	FoulWords.Add("testical");
 	FoulWords.Add("testicle");
-	FoulWords.Add("tit");
+	// FoulWords.Add("tit"); // https://en.wikipedia.org/wiki/Great_tit
 	FoulWords.Add("titfuck");
 	FoulWords.Add("tits");
 	FoulWords.Add("titt");
@@ -499,7 +499,6 @@ defaultproperties
     // From this point forward, some custom ones
     FoulWords.Add("hitler");
     FoulWords.Add("sandnigger");
-    FoulWords.Add("sand nigger");
     FoulWords.Add("sand-nigger");
     FoulWords.Add("tranny");
     FoulWords.Add("trannie");
@@ -507,4 +506,11 @@ defaultproperties
     FoulWords.Add("tranoids");
     FoulWords.Add("tranoid");
     FoulWords.Add("troon");
+    FoulWords.Add("troons");
+    FoulWords.Add("rugmuncher");
+    FoulWords.Add("she-male");
+    FoulWords.Add("kike");
+    FoulWords.Add("tarbaby");
+    FoulWords.Add("rape");
+    FoulWords.Add("rapist");
 }
